@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="tiendamatetp: mates, bombillas, termos, materas y combos en La Penca y Caraguatá, Santa Fe." />
   <meta name="theme-color" content="#17120e" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <title>tiendamatetp | Tradición que se comparte</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +16,7 @@
 <body>
   <div class="intro" id="intro" aria-hidden="true">
     <div class="intro-steam steam-one"></div><div class="intro-steam steam-two"></div><div class="intro-steam steam-three"></div>
-    <div class="intro-logo"><span>TP</span></div>
+    <div class="intro-logo"><img src="assets/logo-tp.png" alt="Logo de tiendamatetp"></div>
     <p>tiendamatetp</p>
   </div>
 
@@ -23,11 +25,10 @@
 
   <header class="site-header" id="inicio">
     <a class="brand" href="#inicio" aria-label="Ir al inicio">
-      <span class="brand-mark">TP</span>
+      <span class="brand-mark brand-logo"><img src="assets/logo-tp.png" alt="Logo tiendamatetp"></span>
       <span class="brand-copy"><strong>tiendamatetp</strong><small>Tradición que se comparte</small></span>
     </a>
     <div class="header-tools">
-      <button class="icon-tool" id="soundToggle" aria-pressed="false" title="Activar ambiente"><span>♫</span><small>Ambiente</small></button>
       <button class="icon-tool" id="themeToggle" aria-pressed="false" title="Cambiar modo"><span>☾</span><small>Noche</small></button>
       <button class="menu-toggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
     </div>
@@ -51,8 +52,9 @@
         <h1>El mate no es una bebida.<br><em>Es el momento.</em></h1>
         <p>Mates, bombillas, termos y materas elegidos con identidad argentina. Encontrá el tuyo, armá tu combo y consultá directamente con Tiago.</p>
         <div class="hero-actions">
-          <a class="button button-primary magnetic" href="#productos">Descubrir productos</a>
-          <a class="button button-glass" href="#combo">Armar mi combo</a>
+          <a class="button button-primary magnetic" href="#productos">Ver productos</a>
+          <a class="button button-glass" href="#personalizados">Pedir personalizado</a>
+          <a class="hero-subaction" href="#combo">O armá tu combo completo →</a>
         </div>
       </div>
       <div class="hero-card reveal">
@@ -111,45 +113,22 @@
       </div>
     </section>
 
-    <section class="custom-section section" id="personalizados">
-      <div class="custom-visual reveal"><img src="assets/termo-negro.png" alt="Termo negro personalizado con grabado" loading="lazy"><div class="engraving-preview"><span>Tu idea</span><strong id="engravingText">Gero</strong></div></div>
-      <div class="custom-copy reveal">
-        <span class="eyebrow dark">Hecho para vos</span>
-        <h2>Personalizá tu mate o termo</h2>
-        <p>Nombres, iniciales, frases, escudos o diseños especiales. Contanos tu idea y consultá las opciones disponibles.</p>
-        <label>Probá una idea de grabado<input id="engravingInput" maxlength="22" placeholder="Escribí un nombre o frase"></label>
-        <div class="engraving-chips"><button data-text="Mis iniciales">Iniciales</button><button data-text="River Plate">Escudo</button><button data-text="Tradición">Frase</button></div>
-        <a class="button button-dark" id="customWhatsapp" target="_blank" rel="noopener">Consultar personalización</a>
+    <section class="personalized-contact section" id="personalizados">
+      <div class="personalized-media reveal">
+        <img src="assets/mate-virola-limpia.png" alt="Mate con virola de acero preparado para un grabado personalizado" loading="lazy">
+        <div class="personalized-stamp"><span>Hecho</span><strong>para vos</strong></div>
       </div>
-    </section>
-
-
-    <section class="design-studio section" id="disenador">
-      <div class="section-heading reveal">
-        <span class="eyebrow dark">Diseñalo antes de pedirlo</span>
-        <h2>Tu mate, con tu sello</h2>
-        <p>Elegí el producto, escribí el grabado y probá distintos estilos. La vista previa es ilustrativa y sirve para enviarle a Tiago una idea clara de lo que querés.</p>
-      </div>
-      <div class="studio-layout">
-        <div class="studio-preview reveal">
-          <div class="preview-stage" id="previewStage">
-            <img id="studioImage" src="assets/mate-premium-negro.png" alt="Vista previa de producto personalizado" />
-            <div class="live-engraving style-elegante" id="liveEngraving">Gerónimo</div>
-          </div>
-          <p>Vista previa ilustrativa · La ubicación final del grabado puede variar según el producto.</p>
+      <div class="personalized-content reveal">
+        <span class="eyebrow dark">Grabados y diseños especiales</span>
+        <h2>Convertí una idea en un mate único</h2>
+        <p>Podés pedir nombres, iniciales, fechas, frases, escudos o logos. Contale a Tiago qué tenés en mente y él te ayuda a elegir el mate, definir la ubicación del grabado y revisar qué opciones se pueden realizar.</p>
+        <div class="personalized-options">
+          <article><span>01</span><div><strong>Contanos tu idea</strong><small>Nombre, frase, escudo, logo o diseño especial.</small></div></article>
+          <article><span>02</span><div><strong>Elegimos el producto</strong><small>Mate, termo o combo según tu gusto y presupuesto.</small></div></article>
+          <article><span>03</span><div><strong>Coordinamos el diseño</strong><small>Tiago confirma posibilidades, precio y tiempo de entrega.</small></div></article>
         </div>
-        <div class="studio-controls reveal">
-          <div class="control-group"><span>1. Producto</span><div class="studio-products">
-            <button class="studio-product active" data-image="assets/mate-premium-negro.png" data-product="Mate Imperial Premium"><img src="assets/mate-premium-negro.png" alt="Mate Imperial"><b>Mate Imperial</b></button>
-            <button class="studio-product" data-image="assets/termo-negro.png" data-product="Termo Negro"><img src="assets/termo-negro.png" alt="Termo negro"><b>Termo</b></button>
-            <button class="studio-product" data-image="assets/mate-camionero.png" data-product="Mate Camionero"><img src="assets/mate-camionero.png" alt="Mate camionero"><b>Camionero</b></button>
-          </div></div>
-          <label class="studio-label"><span>2. Texto del grabado</span><input id="studioText" maxlength="20" value="Gerónimo" placeholder="Nombre, iniciales o frase"></label>
-          <div class="control-group"><span>3. Estilo</span><div class="font-options">
-            <button class="font-option active" data-style="elegante">Elegante</button><button class="font-option" data-style="clasico">Clásico</button><button class="font-option" data-style="campo">Campo</button><button class="font-option" data-style="moderno">Moderno</button>
-          </div></div>
-          <a class="button button-primary" id="studioWhatsapp" target="_blank" rel="noopener">Pedir este diseño por WhatsApp</a>
-        </div>
+        <a class="button button-dark personalized-whatsapp" href="https://wa.me/5493498446335?text=Hola%20Tiago%2C%20vi%20la%20secci%C3%B3n%20de%20personalizados%20en%20la%20p%C3%A1gina%20de%20tiendamatetp.%20Quiero%20consultar%20por%20un%20mate%20o%20termo%20personalizado.%20Mi%20idea%20es%3A%20" target="_blank" rel="noopener">Hablar con Tiago por WhatsApp</a>
+        <small class="personalized-note">Podés enviarle una foto, logo o referencia directamente por WhatsApp.</small>
       </div>
     </section>
 
@@ -190,19 +169,18 @@
         <p><strong>tiendamatetp nació en La Penca y Caraguatá</strong> con la idea de acercar productos materos con identidad, calidad y tradición.</p>
         <p>Lo que comenzó como un emprendimiento en casa fue creciendo de boca en boca, llegando a nuevos clientes de la zona y convirtiendo cada venta en una nueva ronda compartida.</p>
         <p><strong>Tiago Pighin</strong>, su dueño, atiende personalmente cada consulta para ayudarte a elegir el producto que mejor se adapte a vos.</p>
-        <a class="button button-dark" href="https://www.instagram.com/tiendamatetp/" target="_blank" rel="noopener">Ver Instagram @tiendamatetp</a>
+        <div class="social-row"><a class="button button-dark" href="https://www.instagram.com/tiendamatetp/" target="_blank" rel="noopener">Ver Instagram @tiendamatetp</a><a class="button button-tiktok" href="https://www.tiktok.com/@tiendamatetp?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">Ver TikTok @tiendamatetp</a></div>
       </div>
       <div class="about-gallery reveal"><img src="assets/mate-camionero.png" alt="Mate camionero artesanal" loading="lazy" /><img src="assets/bombillas-premium.png" alt="Bombillas premium" loading="lazy" /></div>
     </section>
 
-    <section class="reviews section">
-      <div class="section-heading reveal"><span class="eyebrow dark">Lo que buscamos en cada venta</span><h2>Una experiencia que dé ganas de volver</h2></div>
-      <div class="review-grid">
-        <blockquote class="reveal"><span>★★★★★</span><p>“Atención cercana, productos con mucha presencia y una compra sin vueltas.”</p><cite>Experiencia tiendamatetp</cite></blockquote>
-        <blockquote class="reveal"><span>★★★★★</span><p>“El regalo perfecto para alguien que lleva el mate a todos lados.”</p><cite>Idea para regalar</cite></blockquote>
-        <blockquote class="reveal"><span>★★★★★</span><p>“Tradición argentina presentada con un estilo distinto y personal.”</p><cite>Identidad TP</cite></blockquote>
+    <section class="purchase-guide section" id="como-comprar">
+      <div class="section-heading reveal"><span class="eyebrow dark">Comprar es simple</span><h2>Elegí, consultá y coordiná</h2><p>La atención es directa con Tiago para confirmar disponibilidad, personalización, forma de pago y entrega.</p></div>
+      <div class="purchase-grid">
+        <article class="reveal"><span>01</span><h3>Elegí tu producto</h3><p>Recorré mates, bombillas, termos, materas o armá un combo.</p></article>
+        <article class="reveal"><span>02</span><h3>Consultá por WhatsApp</h3><p>El mensaje llega preparado con el artículo que te interesó.</p></article>
+        <article class="reveal"><span>03</span><h3>Coordiná con Tiago</h3><p>Confirmá precio, disponibilidad, personalización y entrega.</p></article>
       </div>
-      <p class="review-note">Estas frases son ilustrativas. Más adelante pueden reemplazarse por opiniones reales de clientes.</p>
     </section>
 
     <section class="location section" id="ubicacion">
@@ -212,14 +190,15 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-brand"><span class="brand-mark">TP</span><div><strong>tiendamatetp</strong><small>Tradición que se comparte</small></div></div>
-    <div class="footer-links"><a href="#productos">Productos</a><a href="#combo">Armá tu combo</a><a href="#ubicacion">Ubicación</a><a href="https://www.instagram.com/tiendamatetp/" target="_blank" rel="noopener">Instagram</a></div>
+    <div class="footer-brand"><span class="brand-mark brand-logo"><img src="assets/logo-tp.png" alt="Logo tiendamatetp"></span><div><strong>tiendamatetp</strong><small>Tradición que se comparte</small></div></div>
+    <div class="footer-links"><a href="#productos">Productos</a><a href="#combo">Armá tu combo</a><a href="#ubicacion">Ubicación</a><a href="https://www.instagram.com/tiendamatetp/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@tiendamatetp?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">TikTok</a></div>
     <p>Diseñada por <strong>Gerónimo Cancian</strong> · © <span id="year"></span> Todos los derechos reservados.</p>
   </footer>
 
   <a class="whatsapp-float" href="https://wa.me/5493498446335?text=Hola%2C%20quiero%20consultar%20por%20un%20art%C3%ADculo%20que%20vi%20en%20la%20p%C3%A1gina%20web%20de%20tiendamatetp." target="_blank" rel="noopener" aria-label="Consultar por WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.37c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.72.34-.25.27-.95.93-.95 2.26 0 1.33.97 2.62 1.11 2.8.14.18 1.91 2.92 4.63 4.1.65.28 1.15.45 1.55.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.29.23-.63.23-1.17.16-1.29-.07-.11-.25-.18-.52-.32zM16.04 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.59 4.47 1.71 6.41L3.13 29l6.74-1.77A12.76 12.76 0 0 0 16.04 28.8c7.06 0 12.8-5.74 12.8-12.8S23.1 3.2 16.04 3.2zm0 23.44c-2.06 0-4.07-.55-5.82-1.6l-.42-.25-4 1.05 1.07-3.9-.27-.44A10.58 10.58 0 0 1 5.4 16c0-5.87 4.78-10.64 10.64-10.64 5.87 0 10.64 4.78 10.64 10.64 0 5.87-4.77 10.64-10.64 10.64z"/></svg><span>WhatsApp</span></a>
 
   <dialog class="product-modal" id="productModal"><button class="modal-close" aria-label="Cerrar">×</button><img id="modalImage" alt="" /><div class="modal-copy"><span id="modalCategory"></span><h3 id="modalName"></h3><p id="modalDescription"></p><strong id="modalPrice"></strong><a id="modalWhatsapp" class="button button-primary" target="_blank" rel="noopener">Consultar por WhatsApp</a></div></dialog>
+
   <script src="script.js"></script>
 </body>
 </html>

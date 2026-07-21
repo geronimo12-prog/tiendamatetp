@@ -24,3 +24,42 @@ html[data-theme="noche"]{--ink:#f5eee5;--cream:#241b15;--paper:#130f0c;--panel:#
 .business-section{margin:0 clamp(20px,7vw,110px) 105px;padding:clamp(38px,6vw,80px);border-radius:36px;background:linear-gradient(120deg,#6e4427,#17110d);color:white;display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center;overflow:hidden;position:relative}.business-section:after{content:"TP";position:absolute;right:-2%;bottom:-28%;font:900 18vw "Playfair Display";color:rgba(255,255,255,.045)}.business-section h2{font-size:clamp(46px,6vw,78px);margin:15px 0}.business-section p{max-width:690px;color:rgba(255,255,255,.7);line-height:1.7}.business-stats{display:grid;gap:12px;position:relative;z-index:1}.business-stats>div{padding:20px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(255,255,255,.06);backdrop-filter:blur(8px)}.business-stats strong,.business-stats span{display:block}.business-stats strong{font:700 22px "Playfair Display"}.business-stats span{font-size:12px;opacity:.65;margin-top:4px}
 @media(max-width:1000px){.studio-layout,.craft-section,.business-section{grid-template-columns:1fr}.gift-grid{grid-template-columns:repeat(2,1fr)}.craft-visual img{height:600px}.business-section{margin-bottom:78px}}
 @media(max-width:620px){.preview-stage img{height:500px}.studio-products{grid-template-columns:1fr 1fr}.gift-grid{grid-template-columns:1fr}.gift-card{min-height:250px}.gift-card h3{margin-top:35px}.craft-visual img{height:500px}.business-section{margin-left:20px;margin-right:20px;padding:34px 24px}.live-engraving{top:58%}}
+
+.nav-studio-link{border:0;background:transparent;color:inherit;font:inherit;cursor:pointer}.studio-promo{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center;background:linear-gradient(135deg,var(--panel),var(--paper));border-radius:28px}.studio-promo-visual{position:relative;overflow:hidden;border-radius:24px;min-height:500px}.studio-promo-visual img{width:100%;height:100%;object-fit:cover}.studio-promo-ring{position:absolute;inset:50% auto auto 50%;width:60%;aspect-ratio:1;border:2px dashed var(--gold);border-radius:50%;transform:translate(-50%,-61%);box-shadow:0 0 60px rgba(212,170,95,.2)}.studio-promo-copy h2{font-size:clamp(2.2rem,4vw,4.4rem);line-height:1}.studio-feature-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:25px 0}.studio-feature-list span{padding:12px;border:1px solid var(--line);border-radius:12px}.studio-overlay{position:fixed;inset:0;z-index:9999;opacity:0;visibility:hidden;transition:.35s}.studio-overlay.open{opacity:1;visibility:visible}.studio-overlay-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.84);backdrop-filter:blur(12px)}.studio-overlay-frame{position:absolute;inset:14px;border-radius:22px;overflow:hidden;box-shadow:0 30px 120px rgba(0,0,0,.7);transform:translateY(20px) scale(.985);transition:.35s}.studio-overlay.open .studio-overlay-frame{transform:none}.studio-overlay iframe{width:100%;height:100%;border:0;background:#0c0907}body.studio-open{overflow:hidden}@media(max-width:800px){.studio-promo{grid-template-columns:1fr;padding:18px}.studio-promo-visual{min-height:360px}.studio-feature-list{grid-template-columns:1fr}.studio-overlay-frame{inset:0;border-radius:0}}
+
+/* Sección de personalizados: consulta directa con Tiago */
+.personalized-contact{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(36px,7vw,90px);align-items:center;background:linear-gradient(135deg,var(--panel),var(--paper));border:1px solid var(--line);border-radius:34px;overflow:hidden;padding:clamp(24px,4vw,54px)}
+.personalized-media{position:relative;min-height:620px;border-radius:26px;overflow:hidden;box-shadow:var(--shadow);background:#1a130e}
+.personalized-media img{width:100%;height:100%;min-height:620px;object-fit:cover}
+.personalized-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(12,8,5,.58));pointer-events:none}
+.personalized-stamp{position:absolute;left:28px;bottom:28px;z-index:2;display:flex;flex-direction:column;color:#fff;text-transform:uppercase;letter-spacing:.12em}
+.personalized-stamp span{font-size:12px;opacity:.75}.personalized-stamp strong{font:800 clamp(28px,4vw,52px)/.95 "Playfair Display",serif}
+.personalized-content h2{font-size:clamp(2.4rem,5vw,5.4rem);line-height:.96;margin:12px 0 22px}.personalized-content>p{font-size:clamp(16px,1.5vw,19px);line-height:1.75;opacity:.78;max-width:62ch}
+.personalized-options{display:grid;gap:12px;margin:30px 0}.personalized-options article{display:grid;grid-template-columns:48px 1fr;gap:15px;align-items:center;padding:15px 16px;border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--paper) 74%,transparent)}
+.personalized-options article>span{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--paper);font-weight:800;font-size:12px}.personalized-options div{display:grid;gap:3px}.personalized-options strong{font-size:15px}.personalized-options small{opacity:.62;line-height:1.4}
+.personalized-whatsapp{display:inline-flex;margin-top:4px}.personalized-note{display:block;margin-top:13px;opacity:.56}
+@media(max-width:900px){.personalized-contact{grid-template-columns:1fr}.personalized-media,.personalized-media img{min-height:460px}}
+@media(max-width:560px){.personalized-contact{margin-left:14px;margin-right:14px;padding:16px;border-radius:24px}.personalized-media,.personalized-media img{min-height:360px}.personalized-content{padding:8px}.personalized-content h2{font-size:2.5rem}.personalized-options article{grid-template-columns:40px 1fr}.personalized-options article>span{width:36px;height:36px}}
+
+
+/* Logo + redes */
+.social-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.button-tiktok{background:linear-gradient(135deg,#121212,#2b2b2b);color:#fff;border:1px solid rgba(0,0,0,.08)}
+.button-tiktok:hover{box-shadow:0 10px 25px rgba(0,0,0,.12)}
+@media(max-width:620px){.social-row .button{width:100%}}
+
+
+/* Revisión general 2026 */
+.intro-logo{overflow:hidden;padding:0;border-radius:28px;background:#111}
+.intro-logo img{width:100%;height:100%;object-fit:cover}
+.brand-logo{overflow:hidden;padding:0;background:#111;border:1px solid rgba(255,255,255,.28)}
+.brand-logo img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.hero-subaction{display:inline-flex;align-items:center;min-height:51px;padding:0 8px;color:rgba(255,255,255,.78);font-weight:700;font-size:13px}
+.hero-subaction:hover{color:#fff}
+.purchase-guide{background:var(--paper)}
+.purchase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.purchase-grid article{padding:30px;border:1px solid var(--line);border-radius:24px;background:var(--panel);min-height:250px;display:flex;flex-direction:column}
+.purchase-grid article>span{font-weight:800;font-size:12px;letter-spacing:.12em;color:var(--brown)}
+.purchase-grid h3{font-size:30px;margin:48px 0 12px}
+.purchase-grid p{line-height:1.65;opacity:.68;margin:0}
+@media(max-width:850px){.purchase-grid{grid-template-columns:1fr}.purchase-grid article{min-height:210px}.purchase-grid h3{margin-top:32px}.hero-subaction{width:100%;justify-content:center}}

@@ -48,9 +48,6 @@ function updateCart(){const chosen=Object.entries(selection).filter(([,v])=>v&&v
 document.querySelector('#cartItems').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(!b)return;delete selection[b.dataset.remove];document.querySelectorAll(`.combo-option[data-key="${b.dataset.remove}"]`).forEach(x=>x.classList.remove('selected'));updateCart()});
 document.querySelector('#sendCombo').addEventListener('click',()=>{const name=document.querySelector('#customerName').value.trim()||'Sin nombre indicado';const chosen=Object.values(selection).filter(v=>v&&v.name!=='Sin matera');const total=chosen.reduce((s,p)=>s+p.price,0);const lines=chosen.map(p=>`• ${p.name} — ${money(p.price)}`).join('\n');const msg=`Hola Tiago, soy ${name}. Quiero consultar para encargar este combo que armé en la página de tiendamatetp:\n\n${lines}\n\nTotal estimado: ${money(total)}.\n¿Está disponible?`;window.open(wa(msg),'_blank','noopener')});
 
-const engravingInput=document.querySelector('#engravingInput'),engravingText=document.querySelector('#engravingText'),customWhatsapp=document.querySelector('#customWhatsapp');
-function updateEngraving(value){const text=value.trim()||'Gero';engravingText.textContent=text;customWhatsapp.href=wa(`Hola, quiero consultar por una personalización que vi en la página web de tiendamatetp. Mi idea de grabado es: "${text}".`)}
-engravingInput.addEventListener('input',e=>updateEngraving(e.target.value));document.querySelectorAll('.engraving-chips button').forEach(b=>b.addEventListener('click',()=>{engravingInput.value=b.dataset.text;updateEngraving(b.dataset.text)}));updateEngraving('Gero');
 
 const menuBtn=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');menuBtn.addEventListener('click',()=>{nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',nav.classList.contains('open'))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 window.addEventListener('scroll',()=>{document.querySelector('.site-header').classList.toggle('scrolled',scrollY>40);const hero=document.querySelector('.hero-image');if(hero&&scrollY<innerHeight*1.2)hero.style.transform=`translateY(${scrollY*.12}px) scale(1.02)`},{passive:true});
@@ -58,36 +55,11 @@ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entr
 
 const themeToggle=document.querySelector('#themeToggle');themeToggle.addEventListener('click',()=>{const night=document.documentElement.dataset.theme!=='noche';document.documentElement.dataset.theme=night?'noche':'campo';themeToggle.classList.toggle('active',night);themeToggle.setAttribute('aria-pressed',night);themeToggle.querySelector('span').textContent=night?'☀':'☾';themeToggle.querySelector('small').textContent=night?'Campo':'Noche';localStorage.setItem('tp-theme',night?'noche':'campo')});if(localStorage.getItem('tp-theme')==='noche')themeToggle.click();
 
-let audioCtx,ambientNodes=[];const soundToggle=document.querySelector('#soundToggle');
-function startAmbient(){audioCtx=new(window.AudioContext||window.webkitAudioContext)();const master=audioCtx.createGain();master.gain.value=.045;master.connect(audioCtx.destination);const buffer=audioCtx.createBuffer(1,audioCtx.sampleRate*2,audioCtx.sampleRate);const data=buffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=Math.random()*2-1;const noise=audioCtx.createBufferSource();noise.buffer=buffer;noise.loop=true;const filter=audioCtx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=500;const gain=audioCtx.createGain();gain.gain.value=.45;noise.connect(filter).connect(gain).connect(master);noise.start();const osc=audioCtx.createOscillator();osc.type='sine';osc.frequency.value=174;const og=audioCtx.createGain();og.gain.value=.035;osc.connect(og).connect(master);osc.start();ambientNodes=[noise,osc,master]}
-function stopAmbient(){ambientNodes.slice(0,2).forEach(n=>{try{n.stop()}catch{}});if(audioCtx)audioCtx.close();ambientNodes=[];audioCtx=null}
-soundToggle.addEventListener('click',()=>{const on=!soundToggle.classList.contains('active');on?startAmbient():stopAmbient();soundToggle.classList.toggle('active',on);soundToggle.setAttribute('aria-pressed',on);soundToggle.querySelector('span').textContent=on?'♬':'♫';soundToggle.querySelector('small').textContent=on?'Activo':'Ambiente'});
-
 document.querySelectorAll('.tilt-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(1000px) rotateY(${x*7}deg) rotateX(${-y*7}deg)`});card.addEventListener('mouseleave',()=>card.style.transform='')});
 window.addEventListener('load',()=>setTimeout(()=>document.querySelector('#intro').classList.add('hidden'),1200));
 document.querySelector('#year').textContent=new Date().getFullYear();render();updateCart();
 
 
-// Diseñador visual de grabados
-const studioImage=document.querySelector('#studioImage');
-const studioText=document.querySelector('#studioText');
-const liveEngraving=document.querySelector('#liveEngraving');
-const studioWhatsapp=document.querySelector('#studioWhatsapp');
-let studioProduct='Mate Imperial Premium', studioStyle='Elegante';
-function updateStudio(){
- const text=(studioText.value.trim()||'Tu nombre');
- liveEngraving.textContent=text;
- studioWhatsapp.href=wa(`Hola Tiago, quiero consultar por un diseño personalizado que armé en la página de tiendamatetp. Producto: ${studioProduct}. Grabado: "${text}". Estilo: ${studioStyle}. ¿Se puede hacer?`);
-}
-document.querySelectorAll('.studio-product').forEach(btn=>btn.addEventListener('click',()=>{
- document.querySelectorAll('.studio-product').forEach(x=>x.classList.remove('active'));btn.classList.add('active');
- studioImage.src=btn.dataset.image;studioProduct=btn.dataset.product;updateStudio();
-}));
-document.querySelectorAll('.font-option').forEach(btn=>btn.addEventListener('click',()=>{
- document.querySelectorAll('.font-option').forEach(x=>x.classList.remove('active'));btn.classList.add('active');
- liveEngraving.className=`live-engraving style-${btn.dataset.style}`;studioStyle=btn.textContent.trim();updateStudio();
-}));
-studioText.addEventListener('input',updateStudio);updateStudio();
 
 // Puntos interactivos de materiales
 const craftDetail=document.querySelector('#craftDetail');
@@ -102,3 +74,4 @@ document.querySelectorAll('.hotspot').forEach(btn=>btn.addEventListener('click',
   window.open(wa(`Hola Tiago, estoy buscando un regalo para ${occasion}. Vi la sección "Regalá un mate" en la página de tiendamatetp y quiero conocer las opciones disponibles.`),'_blank','noopener');
  }));
 document.querySelector('#businessWhatsapp').href=wa('Hola Tiago, quiero consultar por un pedido personalizado para una empresa, club o evento que vi en la página de tiendamatetp. Quisiera conocer opciones, cantidades y tiempos de entrega.');
+
