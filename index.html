@@ -12,7 +12,7 @@
   <title>tiendamatetp | Tradición que se comparte</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 
   <style>
@@ -103,10 +103,56 @@
 
 </head>
 <body>
-  <div class="intro" id="intro" aria-hidden="true">
-    <div class="intro-steam steam-one"></div><div class="intro-steam steam-two"></div><div class="intro-steam steam-three"></div>
-    <div class="intro-logo"><img src="assets/logo-tp.png" alt="Logo de tiendamatetp"></div>
-    <p>tiendamatetp</p>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="stock-livebar" id="stockLivebar">
+    <span class="live-dot"></span><strong>Stock online</strong><span id="livebarText">Comprobando catálogo…</span><a href="#productos">Ver disponibilidad</a>
+  </div>
+  <div class="intro intro-pour" id="intro" aria-hidden="true">
+    <div class="intro-ambient ambient-one"></div>
+    <div class="intro-ambient ambient-two"></div>
+    <div class="intro-scene">
+      <div class="intro-flag" aria-hidden="true"><span class="flag-sun"></span></div>
+      <div class="intro-pack" aria-hidden="true">
+        <span class="pack-top"></span>
+        <span class="pack-body"><i>TP</i><small>YERBA</small></span>
+        <span class="pack-mouth"></span>
+      </div>
+      <div class="intro-yerba-particles" aria-hidden="true">
+        <span class="yerba-bit y1"></span><span class="yerba-bit y2"></span><span class="yerba-bit y3"></span><span class="yerba-bit y4"></span><span class="yerba-bit y5"></span><span class="yerba-bit y6"></span><span class="yerba-bit y7"></span><span class="yerba-bit y8"></span>
+      </div>
+      <div class="intro-thermo" aria-hidden="true">
+        <span class="thermo-lid"></span>
+        <span class="thermo-neck"></span>
+        <span class="thermo-body"><i>TP</i></span>
+        <span class="thermo-handle"></span>
+        <span class="thermo-spout"></span>
+      </div>
+      <div class="intro-water-drops" aria-hidden="true">
+        <span class="water-drop w1"></span><span class="water-drop w2"></span><span class="water-drop w3"></span><span class="water-drop w4"></span><span class="water-drop w5"></span>
+      </div>
+      <div class="intro-mate" aria-hidden="true">
+        <span class="mate-cup"></span>
+        <span class="mate-rim"></span>
+        <span class="mate-base"></span>
+        <span class="mate-yerba"></span>
+        <span class="mate-water"></span>
+        <span class="mate-splash"></span>
+        <span class="mate-bombilla"></span>
+        <span class="intro-steam intro-steam-a"></span>
+        <span class="intro-steam intro-steam-b"></span>
+        <span class="intro-steam intro-steam-c"></span>
+      </div>
+      <div class="intro-ring ring-one"></div>
+      <div class="intro-ring ring-two"></div>
+      <div class="intro-ring ring-three"></div>
+    </div>
+    <div class="intro-brand-reveal">
+      <img src="assets/logo-tp.png" alt="Logo de tiendamatetp">
+      <strong>tiendamatetp</strong>
+      <small>Tradición que se comparte</small>
+      <span class="intro-tagline">De Santa Fe a tu ronda</span>
+    </div>
   </div>
 
   <div class="page-watermark" aria-hidden="true">TP</div>
@@ -133,23 +179,47 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero hero-v2">
       <div class="hero-shade"></div>
+      <div class="hero-orbs" aria-hidden="true"><span class="orb orb-one"></span><span class="orb orb-two"></span><span class="orb orb-three"></span></div>
+      <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+      <div class="hero-sparkles" aria-hidden="true"><span class="sparkle s1"></span><span class="sparkle s2"></span><span class="sparkle s3"></span><span class="sparkle s4"></span><span class="sparkle s5"></span></div>
       <img class="hero-image parallax" src="assets/matera-combo.png" alt="Matera de cuero, mate y bombilla" />
       <div class="hero-content reveal">
         <span class="eyebrow">Desde La Penca y Caraguatá, Santa Fe</span>
-        <h1>El mate no es una bebida.<br><em>Es el momento.</em></h1>
-        <p>Mates, bombillas, termos y materas elegidos con identidad argentina. Encontrá el tuyo, armá tu combo y consultá directamente con Tiago.</p>
+        <h1>El mate no es una bebida.<br><em>Es <span class="hero-word" id="heroWord">el momento</span>.</em></h1>
+        <p>Elegí con toda la información a la vista: <strong>precio, disponibilidad y unidades reales</strong>. Sin preguntar qué queda: entrás, elegís y mandás el pedido listo.</p>
         <div class="hero-actions">
-          <a class="button button-primary magnetic" href="#productos">Ver productos</a>
-          <a class="button button-glass" href="#personalizados">Pedir personalizado</a>
+          <a class="button button-primary magnetic" href="#productos">Explorar stock disponible</a>
+          <a class="button button-glass magnetic" href="#personalizados">Pedir personalizado</a>
           <a class="hero-subaction" href="#combo">O armá tu combo completo →</a>
         </div>
+        <div class="hero-premium-line reveal">
+          <span>Especial Día de la Madre</span>
+          <span>Personalizados</span>
+          <span>Stock real</span>
+          <span>Compra por WhatsApp</span>
+        </div>
+        <div class="hero-mini-stats reveal">
+          <article>
+            <strong id="miniVisibleProducts">0</strong>
+            <span>productos online</span>
+          </article>
+          <article>
+            <strong id="miniFeaturedProducts">0</strong>
+            <span>destacados hoy</span>
+          </article>
+          <article>
+            <strong>1 click</strong>
+            <span>y abrís el pedido por WhatsApp</span>
+          </article>
+        </div>
+        <div class="hero-whisper reveal">Detalles, stock real y una web con personalidad propia.</div>
       </div>
-      <div class="hero-card reveal">
-        <span>Atención directa</span>
-        <strong>Elegí, personalizá y coordiná tu compra</strong>
-        <small>Precios provisorios sujetos a actualización.</small>
+      <div class="hero-card hero-stock-card reveal">
+        <span>Inventario actualizado</span>
+        <div class="hero-stock-number"><strong id="heroUnits">—</strong><small>unidades disponibles</small></div>
+        <div class="hero-stock-meta"><b id="heroProducts">— productos</b><i></i><b id="heroLowStock">— con pocas unidades</b></div>
       </div>
       <a class="scroll-cue" href="#destacado"><span></span>Descubrir</a>
     </section>
@@ -160,7 +230,57 @@
       <div><strong>Identidad argentina</strong><span>Tradición, campo y buenos momentos</span></div>
     </section>
 
-    <section class="spotlight section" id="destacado">
+    <section class="product-river" aria-label="Productos destacados en movimiento">
+      <div class="product-river-head">
+        <span>Ahora en la tienda</span>
+        <strong>Deslizá, mirá, elegí.</strong>
+      </div>
+      <div class="product-river-window">
+        <div class="product-river-track" id="productRiverTrack"></div>
+      </div>
+    </section>
+
+    <section class="brand-signature section section-tight" aria-label="Sello de tiendamatetp">
+      <div class="signature-shell reveal">
+        <span class="signature-mark">TP</span>
+        <span class="eyebrow dark">Sello de la casa</span>
+        <h2>Campo, cuero, yerba y detalle. Una identidad matera propia.</h2>
+        <p>tiendamatetp está pensada para que se la reconozca a simple vista: cálida, argentina, con carácter y con una forma distinta de mostrar cada producto.</p>
+        <div class="signature-pills">
+          <span>Ronda diaria</span>
+          <span>Diseño con carácter</span>
+          <span>Personalizados</span>
+          <span>Santa Fe</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="shop-mood section" id="elegi-tu-estilo">
+      <div class="section-heading reveal">
+        <span class="eyebrow dark">Elegí por momento</span>
+        <h2>No todos toman mate de la misma forma.</h2>
+        <p>Entrá por el tipo de plan que tenés y llegá más rápido a lo que te sirve.</p>
+      </div>
+      <div class="mood-grid">
+        <button class="mood-card reveal" type="button" data-jump-filter="mates">
+          <img src="assets/mate-camionero.png" alt="Mate camionero" loading="lazy">
+          <span>Para todos los días</span><strong>Mates para bancar la rutina.</strong><i>Ver mates →</i>
+        </button>
+        <button class="mood-card reveal" type="button" data-jump-filter="termos">
+          <img src="assets/termo-negro.png" alt="Termo negro" loading="lazy">
+          <span>Para salir</span><strong>Termo listo para viaje, ruta o cancha.</strong><i>Ver termos →</i>
+        </button>
+        <button class="mood-card reveal" type="button" data-jump-filter="combos">
+          <img src="assets/matera-combo.png" alt="Combo matero" loading="lazy">
+          <span>Para regalar</span><strong>Combos que ya vienen con presencia.</strong><i>Ver combos →</i>
+        </button>
+        <a class="mood-card mood-card-dark reveal" href="#personalizados">
+          <img src="assets/mate-premium-negro.png" alt="Mate premium personalizado" loading="lazy">
+          <span>Para hacerlo único</span><strong>Nombre, frase, logo o idea propia.</strong><i>Personalizar →</i>
+        </a>
+      </div>
+    </section>
+<section class="spotlight section" id="destacado">
       <div class="spotlight-image reveal tilt-card"><img src="assets/mate-premium-negro.png" alt="Mate imperial premium destacado" loading="lazy"><span class="spotlight-badge">Destacado de la semana</span></div>
       <div class="spotlight-copy reveal">
         <span class="eyebrow dark">Pieza protagonista</span>
@@ -175,8 +295,13 @@
       <div class="section-heading reveal">
         <span class="eyebrow dark">Catálogo</span>
         <h2>Encontrá el compañero de tus mejores momentos</h2>
-        <p>Los precios publicados son provisorios para esta primera versión de la tienda.</p>
+        <p>Stock visible y cantidades actualizadas. Si quedan pocas unidades, lo vas a ver antes de escribir.</p>
       </div>
+      <div class="catalog-toolbar reveal">
+        <label class="catalog-search"><span>⌕</span><input id="productSearch" type="search" placeholder="Buscar mate, termo, bombilla…" autocomplete="off"></label>
+        <label class="catalog-sort"><span>Ordenar</span><select id="productSort"><option value="featured">Destacados</option><option value="stock">Mayor stock</option><option value="price-asc">Menor precio</option><option value="price-desc">Mayor precio</option><option value="name">Nombre A–Z</option></select></label>
+      </div>
+      <div class="catalog-status reveal"><span class="live-dot"></span><strong id="catalogStatusTitle">Comprobando inventario</strong><small id="catalogStatusText">Estamos sincronizando las unidades disponibles.</small></div>
       <div class="filters reveal" role="group" aria-label="Filtrar productos">
         <button class="filter active" data-filter="all">Todos</button><button class="filter" data-filter="mates">Mates</button><button class="filter" data-filter="bombillas">Bombillas</button><button class="filter" data-filter="termos">Termos</button><button class="filter" data-filter="combos">Combos y materas</button>
       </div>
@@ -228,7 +353,7 @@
 
     <section class="personalized-contact section" id="personalizados">
       <div class="personalized-media reveal">
-        <img src="assets/mate-virola-limpia.png" alt="Mate con virola de acero preparado para un grabado personalizado" loading="lazy">
+        <img src="assets/mate-premium-negro.png" alt="Mate con virola de acero preparado para un grabado personalizado" loading="lazy">
         <div class="personalized-stamp"><span>Hecho</span><strong>para vos</strong></div>
       </div>
       <div class="personalized-content reveal">
@@ -302,11 +427,21 @@
     </section>
   </main>
 
+  <section class="brand-rail" aria-hidden="true"><div><span>TP</span><b>Ronda</b><span>TP</span><b>Ruta</b><span>TP</span><b>Regalo</b><span>TP</span><b>Personalizado</b><span>TP</span><b>Santa Fe</b><span>TP</span><b>Ronda</b><span>TP</span><b>Ruta</b></div></section>
+
   <footer class="footer">
     <div class="footer-brand"><span class="brand-mark brand-logo"><img src="assets/logo-tp.png" alt="Logo tiendamatetp"></span><div><strong>tiendamatetp</strong><small>Tradición que se comparte</small></div></div>
     <div class="footer-links"><a href="#productos">Productos</a><a href="#combo">Armá tu combo</a><a href="#ubicacion">Ubicación</a><a href="https://www.instagram.com/tiendamatetp/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@tiendamatetp?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">TikTok</a><button class="footer-admin" id="openAdmin" type="button">Panel de Tiago</button></div>
     <p>Diseñada por <strong>Gerónimo Cancian</strong> · © <span id="year"></span> Todos los derechos reservados.</p>
   </footer>
+
+  <button class="back-top" id="backTop" type="button" aria-label="Volver arriba">↑</button>
+
+  <div class="quick-dock" id="quickDock" aria-label="Accesos rápidos">
+    <a class="magnetic" href="#productos"><span>◫</span><b>Stock</b></a>
+    <a class="magnetic" href="#combo"><span>＋</span><b>Combo</b></a>
+    <a class="magnetic quick-dock-main" href="https://wa.me/5493498446335?text=Hola%2C%20quiero%20consultar%20por%20un%20art%C3%ADculo%20que%20vi%20en%20la%20p%C3%A1gina%20web%20de%20tiendamatetp." target="_blank" rel="noopener"><span>↗</span><b>WhatsApp</b></a>
+  </div>
 
   <a class="whatsapp-float" href="https://wa.me/5493498446335?text=Hola%2C%20quiero%20consultar%20por%20un%20art%C3%ADculo%20que%20vi%20en%20la%20p%C3%A1gina%20web%20de%20tiendamatetp." target="_blank" rel="noopener" aria-label="Consultar por WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.37c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.72.34-.25.27-.95.93-.95 2.26 0 1.33.97 2.62 1.11 2.8.14.18 1.91 2.92 4.63 4.1.65.28 1.15.45 1.55.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.29.23-.63.23-1.17.16-1.29-.07-.11-.25-.18-.52-.32zM16.04 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.59 4.47 1.71 6.41L3.13 29l6.74-1.77A12.76 12.76 0 0 0 16.04 28.8c7.06 0 12.8-5.74 12.8-12.8S23.1 3.2 16.04 3.2zm0 23.44c-2.06 0-4.07-.55-5.82-1.6l-.42-.25-4 1.05 1.07-3.9-.27-.44A10.58 10.58 0 0 1 5.4 16c0-5.87 4.78-10.64 10.64-10.64 5.87 0 10.64 4.78 10.64 10.64 0 5.87-4.77 10.64-10.64 10.64z"/></svg><span>WhatsApp</span></a>
 
@@ -358,7 +493,7 @@
     </form>
   </dialog>
 
-  <dialog class="product-modal" id="productModal"><button class="modal-close" aria-label="Cerrar">×</button><img id="modalImage" alt="" /><div class="modal-copy"><span id="modalCategory"></span><h3 id="modalName"></h3><p id="modalDescription"></p><strong id="modalPrice"></strong><a id="modalWhatsapp" class="button button-primary" target="_blank" rel="noopener">Consultar por WhatsApp</a></div></dialog>
+  <dialog class="product-modal product-modal-v2" id="productModal"><button class="modal-close" aria-label="Cerrar">×</button><div class="modal-image-wrap"><img id="modalImage" alt="" /><span id="modalStockPill" class="modal-stock-pill"></span></div><div class="modal-copy"><span id="modalCategory"></span><h3 id="modalName"></h3><p id="modalDescription"></p><strong id="modalPrice"></strong><div class="modal-buy-row"><label>Cantidad<div class="qty-control"><button id="qtyMinus" type="button">−</button><input id="modalQty" value="1" inputmode="numeric" readonly><button id="qtyPlus" type="button">+</button></div></label><div class="modal-subtotal"><small>Subtotal</small><b id="modalSubtotal">$0</b></div></div><a id="modalWhatsapp" class="button button-primary" target="_blank" rel="noopener">Pedir por WhatsApp</a><small class="modal-stock-note" id="modalStockNote"></small></div></dialog>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
