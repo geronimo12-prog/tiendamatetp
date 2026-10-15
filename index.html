@@ -492,8 +492,16 @@
         <label>Unidades<input id="editStock" type="number" min="0" step="1" required></label>
         <label>Estado<select id="editStatus"><option value="available">Disponible</option><option value="low">Pocas unidades</option><option value="order">Por encargo</option><option value="out">Sin stock</option></select></label>
         <label class="wide">Descripción<textarea id="editDescription" rows="4" maxlength="350"></textarea></label>
-        <label class="wide">Imagen actual / URL<input id="editImage" required></label>
-        <label class="wide upload-label">O cargar una foto principal<input id="editUpload" type="file" accept="image/jpeg,image/png,image/webp"><small>Esta es la portada que se usa en catálogo y carrusel. Máximo 8 MB.</small></label>
+        <div class="wide primary-image-picker">
+          <div class="primary-image-preview" id="primaryImagePreview"><img id="primaryImagePreviewImg" alt="Vista previa de la foto principal"><span id="primaryImagePreviewEmpty">Sin foto seleccionada</span></div>
+          <div class="primary-image-actions">
+            <strong>Foto principal</strong>
+            <span>Es la portada que aparece en catálogo y carrusel.</span>
+            <label class="primary-upload-button">Elegir foto<input id="editUpload" type="file" accept="image/jpeg,image/png,image/webp"></label>
+            <small>JPG, PNG o WebP · máximo 8 MB.</small>
+            <details class="image-url-advanced"><summary>Usar una URL en vez de subir archivo</summary><input id="editImage" placeholder="https://... o assets/..."></details>
+          </div>
+        </div>
         <label class="wide upload-label media-upload-label">Galería adicional · fotos y videos<input id="editMediaUpload" type="file" multiple accept="image/jpeg,image/png,image/webp,video/mp4,video/webm,video/quicktime"><small>Podés elegir varios archivos juntos. Fotos hasta 8 MB; videos hasta 50 MB.</small></label>
         <div class="wide editor-media-manager" id="editorMediaManager"><span class="editor-media-empty">Guardá el producto y después vas a ver acá su galería.</span></div>
         <label class="check"><input id="editVisible" type="checkbox" checked> Mostrar en la tienda</label>
