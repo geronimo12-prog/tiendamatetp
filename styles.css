@@ -352,3 +352,169 @@ img,video,iframe{max-width:100%;height:auto}
   .intro-scene{transform:translate(-50%,-57%) scale(.52)!important}.intro-brand-reveal{bottom:10px!important}
   .hero,.hero-v2{padding-top:104px!important;padding-bottom:80px!important}.hero-mini-stats{display:none!important}.hero-card.hero-stock-card{display:none!important}
 }
+\n\n/* ===== TIENDAMATETP 15 · CLEAN MOTION COMMERCE ===== */
+:root{--ink:#181512;--paper:#f8f5ef;--cream:#f0ebe2;--panel:#f4f0e9;--brown:#6f533f;--gold:#c9974e;--green:#3c644f;--line:rgba(24,21,18,.11);--shadow:0 24px 70px rgba(31,24,18,.10)}
+html[data-theme="noche"]{--ink:#f5f0e9;--paper:#11100e;--cream:#181512;--panel:#1d1a17;--line:rgba(255,255,255,.11)}
+body{font-family:"Inter",sans-serif;letter-spacing:-.01em;background:var(--paper)}
+h1,h2,h3,.brand-copy strong,.footer-brand strong,.product-price,.hero-stock-number strong,.spotlight-price strong,.river-card-copy strong{font-family:"Manrope",sans-serif!important;font-variation-settings:normal!important}
+.eyebrow,.product-info>span,.filter,.brand-copy small,.footer-brand small,.river-card-copy small,.catalog-sort span,.stock-livebar{font-family:"Inter",sans-serif!important;letter-spacing:.08em!important}
+.page-watermark,.brand-signature,.signature-shell,.signature-pills,.brand-rail,.quick-dock,.catalog-status{display:none!important}
+body:before{opacity:.08!important;background-image:none!important}.grain{opacity:.012!important}
+.site-header{height:auto;min-height:82px;padding:14px clamp(18px,4vw,56px);background:rgba(18,15,13,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}.brand-mark{width:48px;height:48px;border-radius:14px}.brand-copy strong{font-size:18px;font-weight:800}.brand-copy small{font-size:9px;color:rgba(255,255,255,.58)}.nav{gap:22px}.nav a{font-size:12px;font-weight:600;letter-spacing:.01em;text-transform:none}.nav-cta{padding:11px 16px!important;border-radius:12px!important;background:#fff!important;color:#17130f!important}
+.hero{min-height:94vh}.hero h1{font-size:clamp(58px,7vw,108px);line-height:.9;letter-spacing:-.065em;font-weight:800}.hero h1 em{font-weight:800}.hero-word{background:none!important;color:#e0b76d!important;-webkit-text-fill-color:#e0b76d;text-shadow:none!important}.hero-word:after{display:none!important}.hero-content>p{font-size:17px;max-width:650px;color:rgba(255,255,255,.72)}.hero-actions{gap:10px}.button{border-radius:14px!important;min-height:50px;padding:0 20px}.button-primary{background:#fff!important;color:#181512!important;box-shadow:none!important}.button-glass{background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.18)!important}.hero-premium-line,.hero-whisper,.hero-mini-stats{display:none!important}.hero-card.hero-stock-card{width:260px;padding:20px;border-radius:18px;background:rgba(15,12,10,.48);border-color:rgba(255,255,255,.14)}
+.trust-strip{grid-template-columns:repeat(3,1fr);background:#11100e;color:#fff;border:0}.trust-strip>div{padding:22px clamp(20px,4vw,50px);border-color:rgba(255,255,255,.08)}.trust-strip strong{font:700 14px/1.2 "Manrope",sans-serif}.trust-strip span{font-size:11px;color:rgba(255,255,255,.56)}
+.product-river{padding:70px 0 76px;background:var(--paper);border:0}.product-river:before,.product-river:after{display:none!important}.product-river-head{display:flex;align-items:end;justify-content:space-between;gap:40px;padding:0 clamp(20px,5vw,72px);margin-bottom:30px}.product-river-head>div{display:grid;gap:10px}.product-river-head span{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brown)}.product-river-head span:before{display:none!important}.product-river-head strong{font:800 clamp(34px,4.2vw,62px)/.98 "Manrope",sans-serif;letter-spacing:-.045em;max-width:720px}.product-river-head p{max-width:360px;margin:0;font-size:13px;line-height:1.6;color:color-mix(in srgb,var(--ink) 55%,transparent)}.product-river-window{overflow:hidden;padding-left:clamp(20px,5vw,72px)}.product-river-track{display:flex;gap:18px;width:max-content;animation:riverFlow 45s linear infinite;will-change:transform}.product-river-window:hover .product-river-track{animation-play-state:paused}.river-card{position:relative;display:block;width:300px;padding:0;border:0;border-radius:22px;overflow:hidden;background:transparent;box-shadow:none!important;text-align:left;cursor:pointer}.river-card img{width:100%;height:360px;object-fit:cover;border-radius:22px;transition:transform .5s ease}.river-card:hover img{transform:scale(1.025)}.river-card-copy{display:grid;grid-template-columns:1fr auto;gap:5px 12px;padding:15px 3px 0}.river-card-copy small{grid-column:1/-1;font-size:10px;color:color-mix(in srgb,var(--ink) 48%,transparent)}.river-card-copy strong{font-size:17px;font-weight:700;line-height:1.2}.river-card-copy b{font-size:15px;align-self:center}.river-card-copy em{grid-column:1/-1;font-size:11px;opacity:.52}.river-card:before,.river-card:after{display:none!important}
+.editorial-strip{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:60px;align-items:end;background:#171512;color:#fff;padding-top:90px;padding-bottom:90px}.editorial-copy span{font-size:10px;font-weight:700;letter-spacing:.14em;color:#c9974e}.editorial-copy h2{font:800 clamp(42px,5.5vw,82px)/.95 "Manrope",sans-serif;letter-spacing:-.055em;margin:18px 0 0;max-width:900px}.editorial-detail{display:grid;gap:12px;justify-self:end;min-width:260px}.editorial-detail span{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.62)}
+.shop-mood{background:var(--paper)}.section-heading h2,.spotlight h2,.about h2,.location h2,.custom-copy h2,.combo-intro h2{font-weight:800;letter-spacing:-.045em}.section-heading h2:after,.spotlight h2:after,.about h2:after,.location h2:after,.custom-copy h2:after,.combo-intro h2:after{display:none!important}.section-heading .eyebrow:before,.spotlight .eyebrow:before,.about .eyebrow:before,.location .eyebrow:before,.custom-copy .eyebrow:before,.combo-intro .eyebrow:before{display:none!important}.section-heading .eyebrow,.spotlight .eyebrow,.about .eyebrow,.location .eyebrow,.custom-copy .eyebrow,.combo-intro .eyebrow{padding-left:0!important}
+.mood-grid{gap:14px}.mood-card{min-height:430px;border-radius:22px!important;box-shadow:none!important;border:0!important}.mood-card:before,.mood-card:after{display:none!important}.mood-card img{transition:transform .6s ease}.mood-card:hover img{transform:scale(1.035)}.mood-card strong{font:750 25px/1.05 "Manrope",sans-serif!important;letter-spacing:-.035em}
+.spotlight{gap:50px}.spotlight-image{border-radius:24px!important;overflow:hidden}.spotlight-copy h2{font-size:clamp(44px,5vw,72px)}
+.catalog{padding-top:90px}.catalog:before{display:none!important}.catalog-toolbar{display:grid;grid-template-columns:1fr auto;gap:12px}.catalog-search,.catalog-sort{border-radius:14px!important;background:var(--panel);border:1px solid var(--line);box-shadow:none!important}.filters{margin-top:22px;gap:8px}.filter{border-radius:999px;padding:11px 16px;font-size:12px;font-weight:600}.filter.active,.filter:hover{background:var(--ink)!important}.product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.product-card{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important}.product-card:before,.product-card:after,.product-sello{display:none!important}.product-card:hover{transform:none!important;box-shadow:none!important}.product-image{aspect-ratio:4/5;border-radius:20px;background:var(--panel);overflow:hidden}.product-image img{transition:transform .5s ease}.product-card:hover .product-image img{transform:scale(1.025)!important;filter:none!important}.stock-badge{top:12px;right:12px;left:auto;border-radius:999px;background:rgba(255,255,255,.88)!important;color:#181512!important;box-shadow:none!important;backdrop-filter:blur(8px)}.product-info{padding:14px 2px 6px}.product-info>span{font-size:10px;color:color-mix(in srgb,var(--ink) 42%,transparent)}.product-info>span:before{display:none!important}.product-info h3{font:700 17px/1.22 "Manrope",sans-serif!important;margin:7px 0 8px;max-width:none}.product-stockline{margin:0 0 12px}.product-stockline small{font-size:11px;opacity:.5}.product-stockline b{font-size:10px}.product-bottom{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.product-bottom:before{display:none!important}.product-price{font:700 16px "Manrope",sans-serif!important;color:var(--ink)!important}.product-actions{display:flex;gap:6px}.product-actions button{min-height:38px;padding:0 11px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:11px;font-weight:700;cursor:pointer}.product-actions .product-cart{background:var(--ink);color:var(--paper);border-color:var(--ink)}.product-actions button:hover{transform:translateY(-1px)}.product-actions button:disabled{opacity:.45;cursor:not-allowed}.mini-wa{display:none!important}
+.yerba-coming{border:0!important;border-radius:0!important}.gift-card,.combo-step,.purchase-grid article,.admin-summary article{box-shadow:none!important}
+.footer{background:#11100e}.footer-brand strong{font-family:"Manrope",sans-serif!important}
+.cart-float,.whatsapp-float{position:fixed;right:20px;z-index:72;border:0;border-radius:50%;width:54px;height:54px;display:grid;place-items:center;box-shadow:0 14px 35px rgba(0,0,0,.18);transition:transform .25s ease,box-shadow .25s ease}.whatsapp-float{bottom:20px;padding:0;background:#25d366}.whatsapp-float span{display:none}.whatsapp-float svg{width:25px}.cart-float{bottom:84px;background:#171512;color:#fff;cursor:pointer}.cart-float:hover,.whatsapp-float:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(0,0,0,.23)}.cart-icon{font-size:23px;line-height:1}.cart-count{position:absolute;right:-2px;top:-4px;min-width:22px;height:22px;padding:0 5px;border-radius:999px;display:grid;place-items:center;background:#c9974e;color:#171512;font-size:10px;font-weight:800;border:2px solid var(--paper)}.cart-float.pulse{animation:cartPulse .42s ease}@keyframes cartPulse{50%{transform:scale(1.12)}}
+.cart-drawer{position:fixed;z-index:160;right:0;top:0;bottom:0;width:min(430px,100vw);display:flex;flex-direction:column;background:var(--paper);color:var(--ink);transform:translateX(103%);transition:transform .38s cubic-bezier(.2,.8,.2,1);box-shadow:-24px 0 70px rgba(0,0,0,.16)}.cart-drawer.open{transform:translateX(0)}.cart-backdrop{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.36);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:.3s}.cart-backdrop.open{opacity:1;visibility:visible}.cart-drawer-head{display:flex;justify-content:space-between;align-items:start;padding:28px;border-bottom:1px solid var(--line)}.cart-drawer-head span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.5}.cart-drawer-head h2{margin:5px 0 0;font:800 34px/1 "Manrope",sans-serif}.cart-drawer-head button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:24px;cursor:pointer}.cart-drawer-items{flex:1;overflow:auto;padding:8px 28px}.cart-line{display:grid;grid-template-columns:82px 1fr auto;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}.cart-line img{width:82px;height:96px;object-fit:cover;border-radius:14px}.cart-line>div{display:grid;align-content:start;gap:5px}.cart-line span{font-size:9px;text-transform:uppercase;letter-spacing:.1em;opacity:.5}.cart-line strong{font-size:14px}.cart-line small{font-size:11px;opacity:.55}.cart-qty{display:flex;align-items:center;gap:10px;margin-top:7px}.cart-qty button,.cart-remove{border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}.cart-qty button{width:28px;height:28px;border-radius:8px}.cart-remove{width:30px;height:30px;border-radius:50%;font-size:18px}.cart-drawer-foot{padding:24px 28px 28px;border-top:1px solid var(--line);display:grid;gap:15px}.cart-drawer-foot>div{display:flex;justify-content:space-between;align-items:end}.cart-drawer-foot span{font-size:11px;opacity:.55}.cart-drawer-foot strong{font-size:24px}.cart-drawer-foot small{font-size:10px;opacity:.5;line-height:1.5}.cart-empty-state{display:grid;place-items:start;gap:7px;padding:44px 0}.cart-empty-state strong{font-size:18px}.cart-empty-state span{font-size:13px;opacity:.55}.cart-open{overflow:hidden}
+@media(max-width:1050px){.nav{gap:14px}.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.river-card{width:260px}.river-card img{height:320px}.editorial-strip{grid-template-columns:1fr}.editorial-detail{justify-self:start;width:100%;grid-template-columns:repeat(4,1fr);gap:12px}.editorial-detail span{border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px}}
+@media(max-width:760px){.site-header{min-height:68px;padding:10px 14px}.brand-mark{width:42px;height:42px}.brand-copy strong{font-size:16px}.hero{min-height:auto;padding-top:118px}.hero h1{font-size:clamp(48px,15vw,72px);line-height:.9}.hero-card.hero-stock-card{position:relative;right:auto;bottom:auto;width:100%;margin-top:24px}.trust-strip{grid-template-columns:1fr}.trust-strip>div{padding:16px 18px}.product-river{padding:50px 0}.product-river-head{display:grid;gap:14px;padding:0 18px}.product-river-head strong{font-size:38px}.product-river-head p{font-size:12px}.product-river-window{padding-left:18px}.product-river-track{gap:12px;animation-duration:30s}.river-card{width:220px}.river-card img{height:285px}.editorial-strip{padding-left:18px;padding-right:18px}.editorial-copy h2{font-size:42px}.editorial-detail{grid-template-columns:1fr 1fr}.mood-grid{grid-template-columns:1fr 1fr!important}.mood-card{min-height:330px!important}.catalog-toolbar{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr 1fr;gap:12px}.product-image{border-radius:16px}.product-info h3{font-size:15px}.product-actions{grid-column:1/-1;width:100%;margin-top:2px}.product-actions button{flex:1}.product-bottom{grid-template-columns:1fr}.cart-float,.whatsapp-float{right:14px;width:50px;height:50px}.whatsapp-float{bottom:max(14px,env(safe-area-inset-bottom))}.cart-float{bottom:calc(max(14px,env(safe-area-inset-bottom)) + 62px)}.back-top{display:none!important}}
+@media(max-width:430px){.mood-grid{grid-template-columns:1fr!important}.product-grid{grid-template-columns:1fr 1fr}.river-card{width:200px}.river-card img{height:260px}.footer{padding-left:18px;padding-right:18px}}
+
+
+/* ===== TIENDAMATETP 16.0 · fixes visuales + carrusel dinámico ===== */
+/* Ventajas: contraste definitivo */
+.trust-strip{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;background:#15110e!important;color:#fff!important;border:0!important;border-bottom:1px solid rgba(255,255,255,.08)!important}
+.trust-strip>div{background:#15110e!important;color:#fff!important;padding:24px clamp(22px,4vw,58px)!important;border-right:1px solid rgba(255,255,255,.08)!important;min-height:92px!important;display:flex!important;flex-direction:column!important;justify-content:center!important;gap:7px!important}
+.trust-strip>div:last-child{border-right:0!important}.trust-strip strong{font-family:"Manrope",sans-serif!important;font-size:15px!important;font-weight:800!important;line-height:1.15!important;color:#fff!important;opacity:1!important}.trust-strip span{font-family:"Inter",sans-serif!important;font-size:12px!important;line-height:1.45!important;color:rgba(255,255,255,.64)!important;opacity:1!important}
+
+/* Cards de momento: texto siempre legible independientemente de la foto */
+.mood-card{isolation:isolate!important;position:relative!important;overflow:hidden!important;background:#17120f!important;border:0!important}
+.mood-card img{z-index:0!important}.mood-card:before{display:block!important;content:""!important;position:absolute!important;inset:0!important;z-index:1!important;background:linear-gradient(180deg,rgba(10,8,6,.08) 0%,rgba(10,8,6,.18) 34%,rgba(10,8,6,.72) 72%,rgba(10,8,6,.94) 100%)!important;pointer-events:none!important}
+.mood-card:after{display:block!important;content:""!important;position:absolute!important;left:0!important;right:0!important;bottom:0!important;height:55%!important;z-index:1!important;background:linear-gradient(0deg,rgba(0,0,0,.44),transparent)!important;pointer-events:none!important}
+.mood-card>span,.mood-card>strong,.mood-card>i{z-index:2!important;text-shadow:0 2px 12px rgba(0,0,0,.5)!important}.mood-card>span{color:#f3cf83!important}.mood-card>strong{color:#fff!important}.mood-card>i{color:rgba(255,255,255,.86)!important;opacity:1!important}
+
+/* Carrusel principal: cards ecommerce reales, sin columnas comprimidas */
+.product-river{position:relative!important;overflow:hidden!important;padding:72px 0 82px!important;background:#fbf7f0!important;border:0!important}
+.product-river-head{display:flex!important;align-items:flex-end!important;justify-content:space-between!important;gap:36px!important;padding:0 clamp(24px,5vw,78px)!important;margin-bottom:34px!important}
+.product-river-head>div{display:grid!important;gap:10px!important}.product-river-head span{font-family:"Inter",sans-serif!important;font-size:11px!important;font-weight:800!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:#7a5638!important}.product-river-head strong{display:block!important;font-family:"Manrope",sans-serif!important;font-size:clamp(38px,4.6vw,68px)!important;font-weight:800!important;line-height:.96!important;letter-spacing:-.055em!important;color:#17120f!important;max-width:760px!important;white-space:normal!important;overflow:visible!important}.product-river-head p{max-width:360px!important;margin:0!important;font-family:"Inter",sans-serif!important;font-size:13px!important;line-height:1.65!important;color:rgba(23,18,15,.58)!important}
+.product-river:before,.product-river:after{content:""!important;display:block!important;position:absolute!important;top:0!important;bottom:0!important;width:min(8vw,110px)!important;z-index:5!important;pointer-events:none!important}.product-river:before{left:0!important;background:linear-gradient(90deg,#fbf7f0,rgba(251,247,240,0))!important}.product-river:after{right:0!important;background:linear-gradient(-90deg,#fbf7f0,rgba(251,247,240,0))!important}
+.product-river-window{width:100%!important;overflow:hidden!important;padding:0!important}.product-river-track{display:flex!important;align-items:flex-start!important;gap:22px!important;width:max-content!important;max-width:none!important;padding-left:clamp(24px,5vw,78px)!important;padding-right:22px!important;animation:tpRiverFlow var(--river-duration,46s) linear infinite!important;will-change:transform!important}.product-river-window:hover .product-river-track,.product-river-window:focus-within .product-river-track{animation-play-state:paused!important}
+@keyframes tpRiverFlow{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+.river-card{all:unset!important;box-sizing:border-box!important;position:relative!important;display:block!important;flex:0 0 clamp(250px,20vw,320px)!important;width:clamp(250px,20vw,320px)!important;cursor:pointer!important;color:#17120f!important;text-align:left!important}.river-media{position:relative!important;display:block!important;width:100%!important;height:390px!important;border-radius:26px!important;overflow:hidden!important;background:#eee7dc!important;box-shadow:0 14px 34px rgba(30,22,16,.07)!important}.river-media img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;border-radius:0!important;transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .35s ease!important}.river-hover{position:absolute!important;left:50%!important;bottom:18px!important;transform:translate(-50%,12px)!important;padding:10px 15px!important;border-radius:999px!important;background:rgba(20,15,12,.84)!important;color:#fff!important;font:700 12px/1 "Inter",sans-serif!important;opacity:0!important;transition:.3s!important;backdrop-filter:blur(8px)!important;white-space:nowrap!important}.river-card:hover .river-media img{transform:scale(1.035)!important;filter:saturate(1.04)!important}.river-card:hover .river-hover{opacity:1!important;transform:translate(-50%,0)!important}.river-card-copy{display:block!important;padding:15px 3px 0!important;min-width:0!important}.river-card-copy small{display:block!important;margin-bottom:7px!important;font:800 10px/1.2 "Inter",sans-serif!important;letter-spacing:.11em!important;text-transform:uppercase!important;color:rgba(23,18,15,.5)!important}.river-card-copy strong{display:block!important;margin:0!important;font:750 18px/1.18 "Manrope",sans-serif!important;letter-spacing:-.025em!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;color:#17120f!important}.river-meta{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;margin-top:11px!important}.river-meta b{font:800 17px/1 "Manrope",sans-serif!important;color:#70492f!important}.river-meta em{font:500 11px/1.2 "Inter",sans-serif!important;color:rgba(23,18,15,.5)!important;font-style:normal!important;white-space:nowrap!important}
+
+@media(max-width:760px){.trust-strip{grid-template-columns:1fr!important}.trust-strip>div{min-height:74px!important;padding:15px 18px!important;border-right:0!important;border-bottom:1px solid rgba(255,255,255,.08)!important}.trust-strip>div:last-child{border-bottom:0!important}.product-river{padding:52px 0 62px!important}.product-river-head{display:grid!important;gap:14px!important;padding:0 18px!important;margin-bottom:24px!important}.product-river-head strong{font-size:clamp(34px,10vw,46px)!important}.product-river-head p{font-size:12px!important;max-width:300px!important}.product-river:before,.product-river:after{width:22px!important}.product-river-track{gap:14px!important;padding-left:18px!important;padding-right:14px!important}.river-card{flex-basis:76vw!important;width:76vw!important;max-width:310px!important}.river-media{height:min(98vw,390px)!important;border-radius:22px!important}.river-card-copy strong{font-size:17px!important}.river-meta b{font-size:16px!important}.mood-card:before{background:linear-gradient(180deg,rgba(10,8,6,.06),rgba(10,8,6,.18) 36%,rgba(10,8,6,.82) 76%,rgba(10,8,6,.96))!important}}
+
+
+/* ===== TIENDAMATETP 17.0 · limpia círculos + intro cinematográfica final ===== */
+/* Nunca más círculos decorativos sobre estas cards */
+.mood-card:before{
+  display:block!important;content:""!important;position:absolute!important;inset:0!important;
+  width:auto!important;height:auto!important;border-radius:inherit!important;z-index:1!important;
+  background:linear-gradient(180deg,rgba(8,6,5,.04) 0%,rgba(8,6,5,.10) 34%,rgba(8,6,5,.72) 74%,rgba(8,6,5,.95) 100%)!important;
+  pointer-events:none!important;box-shadow:none!important
+}
+.mood-card:after{
+  display:block!important;content:""!important;position:absolute!important;inset:auto 0 0!important;
+  width:auto!important;height:52%!important;border-radius:0!important;z-index:1!important;
+  background:linear-gradient(0deg,rgba(0,0,0,.34),transparent)!important;pointer-events:none!important
+}
+.product-river-head>p{display:none!important}
+.product-river-head{justify-content:flex-start!important}
+
+/* Nueva intro: mate central, yerba real en partículas, termo con gotas */
+.intro.intro-pour{background:radial-gradient(circle at 50% 52%,#2d1c12 0%,#19100b 45%,#0d0907 100%)!important}
+.intro-flag{display:none!important}
+.intro-scene{
+  width:min(920px,94vw)!important;height:min(590px,72vh)!important;min-height:430px!important;
+  position:relative!important;display:block!important;filter:none!important
+}
+.intro-scene:before{
+  content:""!important;position:absolute!important;left:50%!important;bottom:5%!important;translate:-50% 0!important;
+  width:52%!important;height:13%!important;border-radius:50%!important;
+  background:radial-gradient(ellipse,rgba(0,0,0,.48),transparent 68%)!important;filter:blur(16px)!important
+}
+.intro-scene:after{
+  content:"";position:absolute;left:50%;top:47%;translate:-50% -50%;width:430px;height:430px;border-radius:50%;
+  background:radial-gradient(circle,rgba(213,164,86,.10),transparent 65%);filter:blur(5px);pointer-events:none
+}
+
+/* Mate, centro visual */
+.intro-mate{
+  left:50%!important;bottom:8%!important;width:252px!important;height:260px!important;
+  transform-origin:50% 100%!important;animation:v17MateIn 6.75s cubic-bezier(.2,.8,.2,1) both!important;z-index:5!important
+}
+.mate-cup{left:55px!important;bottom:17px!important;width:142px!important;height:148px!important;background:linear-gradient(128deg,#16120f 0%,#432e1e 34%,#1b120e 70%,#080706 100%)!important}
+.mate-rim{left:42px!important;bottom:130px!important;width:168px!important;height:52px!important;z-index:5!important}
+.mate-base,.mate-yerba,.mate-water{left:57px!important;bottom:140px!important;width:138px!important;height:29px!important}
+.mate-base{background:radial-gradient(ellipse,#292b25 0%,#171914 74%,#10110e 100%)!important}
+.mate-yerba{z-index:6!important;background:radial-gradient(ellipse,#9cb875 0%,#658648 46%,#384c2c 100%)!important;transform:scale(.08)!important;opacity:0!important;animation:v17YerbaFill 6.75s cubic-bezier(.2,.8,.2,1) both!important}
+.mate-water{z-index:7!important;background:radial-gradient(ellipse,rgba(223,246,255,.82) 0%,rgba(171,214,200,.66) 24%,rgba(102,136,78,.94) 62%,#465f37 100%)!important;transform:scale(.08)!important;opacity:0!important;animation:v17WaterFill 6.75s ease both!important}
+.mate-bombilla{left:140px!important;bottom:151px!important;height:126px!important;z-index:8!important}
+.mate-splash{left:111px!important;bottom:151px!important;z-index:9!important;animation:v17Splash 6.75s ease both!important}
+.intro-steam{z-index:10!important;bottom:174px!important;animation:v17Steam 2.5s ease-in-out infinite!important}.intro-steam-a{animation-delay:4.85s!important}.intro-steam-b{animation-delay:5.12s!important}.intro-steam-c{animation-delay:5.38s!important}
+
+/* Paquete más simple. Entra, se inclina, vacía y se va */
+.intro-pack{
+  left:14%!important;top:17%!important;width:146px!important;height:220px!important;z-index:6!important;
+  transform-origin:82% 82%!important;animation:v17PackMove 6.75s cubic-bezier(.4,.02,.2,1) both!important
+}
+.pack-body{left:18px!important;top:20px!important;width:104px!important;height:178px!important;border-radius:22px 22px 30px 30px!important;background:linear-gradient(145deg,#416f50,#1e4d35 48%,#123525)!important}
+.pack-top{left:28px!important;width:94px!important}.pack-mouth{left:3px!important;top:61px!important;width:42px!important;height:20px!important}
+.pack-body i{font-size:24px!important}.pack-body small{font-size:11px!important}
+
+/* Yerba: solo hojitas, sin barra/chorro */
+.intro-yerba-particles{
+  left:31%!important;top:30%!important;width:180px!important;height:245px!important;z-index:7!important;
+  transform:rotate(16deg)!important;pointer-events:none!important
+}
+.yerba-bit{
+  width:9px!important;height:13px!important;border-radius:65% 35% 60% 40%!important;
+  background:linear-gradient(180deg,#a4c477,#5e813f)!important;opacity:0!important;
+  animation:v17YerbaFall 1.05s cubic-bezier(.25,.5,.35,1) infinite!important
+}
+.y1{left:16px!important;animation-delay:1.18s!important}.y2{left:35px!important;animation-delay:1.34s!important}.y3{left:52px!important;animation-delay:1.51s!important}.y4{left:70px!important;animation-delay:1.68s!important}.y5{left:88px!important;animation-delay:1.84s!important}.y6{left:44px!important;animation-delay:2.02s!important}.y7{left:64px!important;animation-delay:2.18s!important}.y8{left:82px!important;animation-delay:2.34s!important}
+
+/* Termo: entra cuando termina la yerba */
+.intro-thermo{
+  right:14%!important;top:11%!important;width:142px!important;height:326px!important;z-index:7!important;
+  transform-origin:30% 88%!important;animation:v17ThermoMove 6.75s cubic-bezier(.35,.04,.22,1) both!important
+}
+.thermo-body{width:88px!important;height:224px!important}.thermo-spout{width:57px!important}.thermo-handle{height:122px!important}
+
+/* Agua: solo gotas individuales que aterrizan dentro del mate */
+.intro-water-drops{
+  left:57%!important;top:34%!important;width:150px!important;height:225px!important;z-index:8!important;
+  transform:rotate(-12deg)!important;pointer-events:none!important
+}
+.water-drop{
+  width:12px!important;height:17px!important;border-radius:55% 45% 62% 38%!important;
+  background:radial-gradient(circle at 35% 27%,#fff 0%,rgba(207,239,252,.94) 48%,rgba(151,214,240,.36) 72%,rgba(151,214,240,0) 100%)!important;
+  opacity:0!important;box-shadow:0 0 12px rgba(196,231,249,.20)!important;
+  animation:v17WaterDrop .92s cubic-bezier(.32,.04,.45,1) infinite!important
+}
+.w1{left:13px!important;animation-delay:3.78s!important}.w2{left:29px!important;animation-delay:3.98s!important}.w3{left:46px!important;animation-delay:4.18s!important}.w4{left:61px!important;animation-delay:4.38s!important}.w5{left:39px!important;animation-delay:4.58s!important}
+
+/* Ondas sutiles, no protagonistas */
+.intro-ring{left:50%!important;bottom:2%!important;z-index:1!important;border-color:rgba(213,164,86,.10)!important;animation:v17Ring 6.75s ease both!important}
+.ring-one{width:250px!important;height:72px!important}.ring-two{width:355px!important;height:102px!important}.ring-three{width:465px!important;height:132px!important;border-color:rgba(255,255,255,.05)!important}
+
+/* Marca final */
+.intro-brand-reveal{bottom:3.5%!important;animation:v17Brand 6.75s ease both!important}.intro-brand-reveal:before{width:120px!important;height:120px!important}.intro-brand-reveal img{width:46px!important;height:46px!important}.intro-tagline{font-size:9px!important;letter-spacing:.18em!important}
+
+@keyframes v17MateIn{0%,7%{opacity:0;transform:translate(-50%,24px) scale(.92)}14%,100%{opacity:1;transform:translate(-50%,0) scale(1)}}
+@keyframes v17PackMove{0%,8%{opacity:0;transform:translate(-36px,-10px) rotate(-8deg)}14%{opacity:1}22%,38%{opacity:1;transform:translate(0,0) rotate(35deg)}47%,100%{opacity:0;transform:translate(-65px,-28px) rotate(12deg)}}
+@keyframes v17YerbaFall{0%{opacity:0;transform:translate(0,-8px) rotate(0) scale(.72)}14%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translate(105px,175px) rotate(165deg) scale(1)}}
+@keyframes v17YerbaFill{0%,18%{opacity:0;transform:scale(.08)}28%{opacity:.7;transform:scale(.45)}39%,100%{opacity:1;transform:scale(1)}}
+@keyframes v17ThermoMove{0%,43%{opacity:0;transform:translate(55px,-18px) rotate(0deg)}51%{opacity:1;transform:translate(0,0) rotate(-8deg)}60%,78%{opacity:1;transform:translate(-4px,5px) rotate(-42deg)}88%,100%{opacity:0;transform:translate(48px,-12px) rotate(-4deg)}}
+@keyframes v17WaterDrop{0%{opacity:0;transform:translate(0,-8px) scale(.65)}16%{opacity:1}84%{opacity:1}100%{opacity:0;transform:translate(-96px,168px) scale(1.04)}}
+@keyframes v17WaterFill{0%,57%{opacity:0;transform:scale(.1)}68%{opacity:.7;transform:scale(.55)}78%,100%{opacity:1;transform:scale(1)}}
+@keyframes v17Splash{0%,66%{opacity:0;transform:scale(.3)}72%{opacity:.95;transform:scale(1)}82%{opacity:.5;transform:scale(1.2)}90%,100%{opacity:0;transform:scale(1.35)}}
+@keyframes v17Steam{0%{opacity:0;transform:translateY(14px) scale(.72)}30%{opacity:.5}100%{opacity:0;transform:translateY(-62px) scale(1.23)}}
+@keyframes v17Ring{0%,26%{opacity:0;transform:scale(.72)}48%{opacity:.26}82%{opacity:.14}100%{opacity:0;transform:scale(1.25)}}
+@keyframes v17Brand{0%,82%{opacity:0;transform:translateY(12px)}91%,100%{opacity:1;transform:translateY(0)}}
+
+/* Responsive intro: toda la composición escala en bloque */
+@media(max-width:760px){
+  .intro-scene{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-55%) scale(.72)!important;transform-origin:center!important;width:820px!important;height:540px!important;min-height:0!important}
+  .intro-brand-reveal{bottom:max(20px,env(safe-area-inset-bottom))!important}
+}
+@media(max-width:520px){.intro-scene{transform:translate(-50%,-56%) scale(.55)!important}.intro-brand-reveal{bottom:max(18px,env(safe-area-inset-bottom))!important}}
+@media(max-width:390px){.intro-scene{transform:translate(-50%,-57%) scale(.49)!important}}
+@media(prefers-reduced-motion:reduce){.intro-pack,.yerba-bit,.intro-thermo,.water-drop,.intro-mate,.mate-yerba,.mate-water,.mate-splash,.intro-steam,.intro-ring,.intro-brand-reveal{animation:none!important}}

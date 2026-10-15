@@ -12,7 +12,7 @@
   <title>tiendamatetp | Tradición que se comparte</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 
   <style>
@@ -112,7 +112,6 @@
     <div class="intro-ambient ambient-one"></div>
     <div class="intro-ambient ambient-two"></div>
     <div class="intro-scene">
-      <div class="intro-flag" aria-hidden="true"><span class="flag-sun"></span></div>
       <div class="intro-pack" aria-hidden="true">
         <span class="pack-top"></span>
         <span class="pack-body"><i>TP</i><small>YERBA</small></span>
@@ -232,26 +231,26 @@
 
     <section class="product-river" aria-label="Productos destacados en movimiento">
       <div class="product-river-head">
-        <span>Ahora en la tienda</span>
-        <strong>Deslizá, mirá, elegí.</strong>
+        <div>
+          <span>Selección en movimiento</span>
+          <strong>Lo que está pasando por la tienda.</strong>
+        </div>
       </div>
       <div class="product-river-window">
         <div class="product-river-track" id="productRiverTrack"></div>
       </div>
     </section>
 
-    <section class="brand-signature section section-tight" aria-label="Sello de tiendamatetp">
-      <div class="signature-shell reveal">
-        <span class="signature-mark">TP</span>
-        <span class="eyebrow dark">Sello de la casa</span>
-        <h2>Campo, cuero, yerba y detalle. Una identidad matera propia.</h2>
-        <p>tiendamatetp está pensada para que se la reconozca a simple vista: cálida, argentina, con carácter y con una forma distinta de mostrar cada producto.</p>
-        <div class="signature-pills">
-          <span>Ronda diaria</span>
-          <span>Diseño con carácter</span>
-          <span>Personalizados</span>
-          <span>Santa Fe</span>
-        </div>
+    <section class="editorial-strip section" aria-label="Tienda Mate TP">
+      <div class="editorial-copy reveal">
+        <span>TIENDA MATE TP</span>
+        <h2>Elegir un mate también es elegir cómo se vive la ronda.</h2>
+      </div>
+      <div class="editorial-detail reveal">
+        <span>01 · Mates</span>
+        <span>02 · Termos</span>
+        <span>03 · Bombillas</span>
+        <span>04 · Combos</span>
       </div>
     </section>
 
@@ -301,7 +300,6 @@
         <label class="catalog-search"><span>⌕</span><input id="productSearch" type="search" placeholder="Buscar mate, termo, bombilla…" autocomplete="off"></label>
         <label class="catalog-sort"><span>Ordenar</span><select id="productSort"><option value="featured">Destacados</option><option value="stock">Mayor stock</option><option value="price-asc">Menor precio</option><option value="price-desc">Mayor precio</option><option value="name">Nombre A–Z</option></select></label>
       </div>
-      <div class="catalog-status reveal"><span class="live-dot"></span><strong id="catalogStatusTitle">Comprobando inventario</strong><small id="catalogStatusText">Estamos sincronizando las unidades disponibles.</small></div>
       <div class="filters reveal" role="group" aria-label="Filtrar productos">
         <button class="filter active" data-filter="all">Todos</button><button class="filter" data-filter="mates">Mates</button><button class="filter" data-filter="bombillas">Bombillas</button><button class="filter" data-filter="termos">Termos</button><button class="filter" data-filter="combos">Combos y materas</button>
       </div>
@@ -427,8 +425,6 @@
     </section>
   </main>
 
-  <section class="brand-rail" aria-hidden="true"><div><span>TP</span><b>Ronda</b><span>TP</span><b>Ruta</b><span>TP</span><b>Regalo</b><span>TP</span><b>Personalizado</b><span>TP</span><b>Santa Fe</b><span>TP</span><b>Ronda</b><span>TP</span><b>Ruta</b></div></section>
-
   <footer class="footer">
     <div class="footer-brand"><span class="brand-mark brand-logo"><img src="assets/logo-tp.png" alt="Logo tiendamatetp"></span><div><strong>tiendamatetp</strong><small>Tradición que se comparte</small></div></div>
     <div class="footer-links"><a href="#productos">Productos</a><a href="#combo">Armá tu combo</a><a href="#ubicacion">Ubicación</a><a href="https://www.instagram.com/tiendamatetp/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@tiendamatetp?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">TikTok</a><button class="footer-admin" id="openAdmin" type="button">Panel de Tiago</button></div>
@@ -437,14 +433,26 @@
 
   <button class="back-top" id="backTop" type="button" aria-label="Volver arriba">↑</button>
 
-  <div class="quick-dock" id="quickDock" aria-label="Accesos rápidos">
-    <a class="magnetic" href="#productos"><span>◫</span><b>Stock</b></a>
-    <a class="magnetic" href="#combo"><span>＋</span><b>Combo</b></a>
-    <a class="magnetic quick-dock-main" href="https://wa.me/5493498446335?text=Hola%2C%20quiero%20consultar%20por%20un%20art%C3%ADculo%20que%20vi%20en%20la%20p%C3%A1gina%20web%20de%20tiendamatetp." target="_blank" rel="noopener"><span>↗</span><b>WhatsApp</b></a>
-  </div>
+  <button class="cart-float" id="cartFloat" type="button" aria-label="Abrir carrito">
+    <span class="cart-icon">⌑</span><span class="cart-count" id="cartCountFloat">0</span>
+  </button>
 
   <a class="whatsapp-float" href="https://wa.me/5493498446335?text=Hola%2C%20quiero%20consultar%20por%20un%20art%C3%ADculo%20que%20vi%20en%20la%20p%C3%A1gina%20web%20de%20tiendamatetp." target="_blank" rel="noopener" aria-label="Consultar por WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.37c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.72.34-.25.27-.95.93-.95 2.26 0 1.33.97 2.62 1.11 2.8.14.18 1.91 2.92 4.63 4.1.65.28 1.15.45 1.55.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.29.23-.63.23-1.17.16-1.29-.07-.11-.25-.18-.52-.32zM16.04 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.59 4.47 1.71 6.41L3.13 29l6.74-1.77A12.76 12.76 0 0 0 16.04 28.8c7.06 0 12.8-5.74 12.8-12.8S23.1 3.2 16.04 3.2zm0 23.44c-2.06 0-4.07-.55-5.82-1.6l-.42-.25-4 1.05 1.07-3.9-.27-.44A10.58 10.58 0 0 1 5.4 16c0-5.87 4.78-10.64 10.64-10.64 5.87 0 10.64 4.78 10.64 10.64 0 5.87-4.77 10.64-10.64 10.64z"/></svg><span>WhatsApp</span></a>
 
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-drawer-head">
+      <div><span>Tu selección</span><h2>Carrito</h2></div>
+      <button id="cartClose" type="button" aria-label="Cerrar carrito">×</button>
+    </div>
+    <div class="cart-drawer-items" id="cartDrawerItems"></div>
+    <div class="cart-drawer-foot">
+      <div><span>Total estimado</span><strong id="cartDrawerTotal">$0</strong></div>
+      <button class="button button-primary" id="cartWhatsapp" type="button">Enviar pedido por WhatsApp</button>
+      <small>El stock y la entrega se confirman al enviar el pedido.</small>
+    </div>
+  </aside>
+  <div class="cart-backdrop" id="cartBackdrop"></div>
 
   <dialog class="admin-modal" id="adminModal">
     <div class="admin-shell">
