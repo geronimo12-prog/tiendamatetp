@@ -31,6 +31,9 @@ const wa=msg=>`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 const whatsappUrl=product=>wa(`Hola, quiero consultar por ${product?'el artículo "'+product+'"':'un artículo'} que vi en la página web de tiendamatetp.`);
 const statusLabels={available:'Disponible',low:'Pocas unidades',order:'Por encargo',out:'Sin stock'};
 const categoryStyles={mates:{tag:'Ronda',accent:'mates'},bombillas:{tag:'Acero',accent:'bombillas'},termos:{tag:'Ruta',accent:'termos'},combos:{tag:'Regalo',accent:'combos'}};
+const FALLBACK_IMAGE='assets/mate-premium-negro.png';
+function safeImage(img){if(!img)return;img.addEventListener('error',()=>{if(!img.dataset.fallback){img.dataset.fallback='1';img.src=FALLBACK_IMAGE}},{once:true})}
+function bindImageFallbacks(root=document){root.querySelectorAll('img').forEach(safeImage)}
 const normalise=p=>({...p,id:Number(p.id),price:Number(p.price)||0,stock:Number(p.stock)||0,visible:p.visible!==false,featured:!!p.featured});
 
 function openDb(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains(STORE))d.createObjectStore(STORE,{keyPath:'id',autoIncrement:true})};req.onsuccess=()=>{db=req.result;resolve(db)};req.onerror=()=>reject(req.error)})}
@@ -82,7 +85,7 @@ function sortedVisibleProducts(filter='all'){
 function render(filter='all'){
  activeFilter=filter;grid.innerHTML='';const visible=sortedVisibleProducts(filter);
  if(!visible.length){grid.innerHTML='<p class="empty-catalog">No encontramos productos con esos filtros.</p>';return}
- visible.forEach((p,index)=>{const card=document.createElement('article');card.className='product-card reveal';card.dataset.out=String(p.status==='out');card.dataset.category=p.category;const exact=p.status==='order'?'Por encargo':p.status==='out'?'Sin stock':`${p.stock} ${p.stock===1?'unidad':'unidades'}`;const disabled=p.status==='out';card.innerHTML=`<div class="product-image" data-id="${p.id}"><img src="${p.image}" alt="${p.name}" loading="lazy">${stockBadge(p)}</div><div class="product-info"><span>${p.label}</span><h3>${p.name}</h3><div class="product-stockline"><small>${exact}</small>${p.featured?'<b>Destacado</b>':''}</div><div class="product-bottom"><strong class="product-price">${money(p.price)}</strong><div class="product-actions"><button class="product-open" data-open="${p.id}" type="button">Ver</button><button class="product-cart" data-cart-add="${p.id}" type="button" ${disabled?'disabled':''}>${disabled?'Sin stock':'Agregar'}</button></div></div></div>`;grid.appendChild(card);setTimeout(()=>card.classList.add('visible'),index*32)})
+ visible.forEach((p,index)=>{const card=document.createElement('article');card.className='product-card reveal';card.dataset.out=String(p.status==='out');card.dataset.category=p.category;const exact=p.status==='order'?'Por encargo':p.status==='out'?'Sin stock':`${p.stock} ${p.stock===1?'unidad':'unidades'}`;const disabled=p.status==='out';card.innerHTML=`<div class="product-image" data-id="${p.id}"><img src="${p.image}" alt="${p.name}" loading="lazy">${stockBadge(p)}</div><div class="product-info"><span>${p.label}</span><h3>${p.name}</h3><div class="product-stockline"><small>${exact}</small>${p.featured?'<b>Destacado</b>':''}</div><div class="product-bottom"><strong class="product-price">${money(p.price)}</strong><div class="product-actions"><button class="product-open" data-open="${p.id}" type="button">Ver</button><button class="product-cart" data-cart-add="${p.id}" type="button" ${disabled?'disabled':''}>${disabled?'Sin stock':'Agregar'}</button></div></div></div>`;grid.appendChild(card);bindImageFallbacks(card);setTimeout(()=>card.classList.add('visible'),index*32)})
 }
 function animateCount(el,to,{duration=900,suffix='',prefix=''}={}){if(!el)return;const safeTo=Number(to)||0;const prefersReduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(prefersReduced){el.textContent=`${prefix}${safeTo}${suffix}`;el.dataset.value=safeTo;return}const start=Number(el.dataset.value||0),diff=safeTo-start,startTime=performance.now();function frame(now){const progress=Math.min(1,(now-startTime)/duration),eased=1-Math.pow(1-progress,3),value=Math.round(start+diff*eased);el.textContent=`${prefix}${value}${suffix}`;if(progress<1)requestAnimationFrame(frame);else el.dataset.value=safeTo}requestAnimationFrame(frame)}
 function updateStoreStatus(){
@@ -96,7 +99,7 @@ function renderFeatured(){
  if(!featured){section.hidden=true;return}
  section.hidden=false;
  const image=section.querySelector('.spotlight-image img'),title=section.querySelector('.spotlight-copy h2'),description=section.querySelector('.spotlight-copy p'),price=section.querySelector('.spotlight-price strong'),priceNote=section.querySelector('.spotlight-price small'),link=section.querySelector('.spotlight-copy .button');
- if(image){image.src=featured.image;image.alt=`${featured.name} destacado`}
+ if(image){image.src=featured.image||FALLBACK_IMAGE;image.alt=`${featured.name} destacado`;safeImage(image)}
  if(title)title.textContent=featured.name;
  if(description)description.textContent=featured.description||'Consultá disponibilidad y opciones de este producto destacado.';
  if(price)price.textContent=money(featured.price);
@@ -235,3 +238,5 @@ function closeCart(){const d=$('#cartDrawer'),b=$('#cartBackdrop');d?.classList.
 $('#cartFloat')?.addEventListener('click',openCart);$('#cartClose')?.addEventListener('click',closeCart);$('#cartBackdrop')?.addEventListener('click',closeCart);$('#cartDrawerItems')?.addEventListener('click',e=>{const rm=e.target.closest('[data-cart-remove]'),inc=e.target.closest('[data-cart-inc]'),dec=e.target.closest('[data-cart-dec]');if(rm)removeFromCart(Number(rm.dataset.cartRemove));if(inc)changeCartQty(Number(inc.dataset.cartInc),1);if(dec)changeCartQty(Number(dec.dataset.cartDec),-1)});
 $('#cartWhatsapp')?.addEventListener('click',()=>{const rows=cart.map(row=>{const p=products.find(x=>x.id===row.id);return p?`${row.qty} x ${p.name} (${money(p.price*row.qty)})`:null}).filter(Boolean);if(!rows.length)return;const total=cart.reduce((s,row)=>{const p=products.find(x=>x.id===row.id);return s+(p?p.price*row.qty:0)},0);window.open(wa(`Hola Tiago, armé este pedido desde la web:\n\n${rows.map(x=>'• '+x).join('\n')}\n\nTotal estimado: ${money(total)}\n\nQuiero confirmar stock y coordinar la compra.`),'_blank','noopener')});
 const originalUpdateStoreStatusV15=updateStoreStatus;updateStoreStatus=function(){originalUpdateStoreStatusV15();renderCart()};renderCart();
+
+window.addEventListener('DOMContentLoaded',()=>bindImageFallbacks(document));
