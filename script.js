@@ -1,29 +1,10 @@
 'use strict';
 
 const phone='5493498446335';
-const DEFAULT_PRODUCTS=[
-{id:1,name:'Mate Imperial Premium',category:'mates',label:'Mate',price:40000,stock:3,status:'low',visible:true,featured:true,image:'assets/mate-premium-negro.png',description:'Mate de presencia elegante, detalles metálicos y base trabajada. Ideal para quien busca un modelo protagonista.'},
-{id:2,name:'Mate Camionero',category:'mates',label:'Mate',price:35000,stock:7,status:'available',visible:true,featured:false,image:'assets/mate-camionero.png',description:'Formato camionero de madera con virola labrada. Cómodo, firme y con estilo bien argentino.'},
-{id:3,name:'Mate Calabaza con Cuero',category:'mates',label:'Mate',price:30000,stock:4,status:'available',visible:true,featured:false,image:'assets/mate-calabaza.png',description:'Calabaza natural con protector de cuero y bombilla decorada. Cada pieza presenta variaciones propias.'},
-{id:4,name:'Mate Negro Clásico',category:'mates',label:'Mate',price:25000,stock:2,status:'low',visible:true,featured:false,image:'assets/mate-negro.png',description:'Diseño sobrio en cuero negro con virola metálica y base estable.'},
-{id:5,name:'Mate Sombrero',category:'mates',label:'Mate',price:20000,stock:0,status:'order',visible:true,featured:false,image:'assets/mate-sombrero.png',description:'Mate de madera con una silueta original que recuerda al clásico sombrero criollo.'},
-{id:6,name:'Mate Coronados de Gloria',category:'mates',label:'Mate',price:30000,stock:5,status:'available',visible:true,featured:false,image:'assets/mates-gloria.png',description:'Mate de madera grabado con el Sol de Mayo. Una opción con fuerte identidad nacional.'},
-{id:7,name:'Mate de Madera',category:'mates',label:'Mate',price:22000,stock:9,status:'available',visible:true,featured:false,image:'assets/mates-madera.png',description:'Modelo de madera torneada, simple, cálido y durable para el uso de todos los días.'},
-{id:8,name:'Mate Imperial Suela',category:'mates',label:'Mate',price:38000,stock:1,status:'low',visible:true,featured:false,image:'assets/mates-imperiales.png',description:'Calabaza, virola labrada y base revestida en cuero claro con costura artesanal.'},
-{id:9,name:'Bombilla Dorada',category:'bombillas',label:'Bombilla',price:10000,stock:12,status:'available',visible:true,featured:false,image:'assets/bombilla-dorada.png',description:'Bombilla de acero con pico dorado, diseño curvo y filtro tipo paleta.'},
-{id:10,name:'Bombilla Clásica',category:'bombillas',label:'Bombilla',price:10000,stock:18,status:'available',visible:true,featured:false,image:'assets/bombillas-clasicas.png',description:'Bombilla versátil para uso diario, con filtro plano y terminación combinada.'},
-{id:11,name:'Bombilla Premium',category:'bombillas',label:'Bombilla',price:15000,stock:6,status:'available',visible:true,featured:false,image:'assets/bombillas-premium.png',description:'Modelo decorado con detalles dorados y cuerpo labrado. Terminación de estilo premium.'},
-{id:12,name:'Termo Negro Grabado',category:'termos',label:'Termo',price:45000,stock:3,status:'available',visible:true,featured:false,image:'assets/termo-negro.png',description:'Termo negro de gran capacidad con manija y grabado criollo personalizado.'},
-{id:13,name:'Combo Termo y Mate',category:'combos',label:'Combo',price:60000,stock:2,status:'low',visible:true,featured:false,image:'assets/combo-termo-negro.png',description:'Combo listo para acompañarte: termo negro, mate de calabaza, cuero y bombilla.'},
-{id:14,name:'Combo Rosa',category:'combos',label:'Combo',price:60000,stock:0,status:'out',visible:true,featured:false,image:'assets/combo-rosa.png',description:'Set rosa compuesto por termo y mate, ideal para regalo o para renovar el equipo completo.'},
-{id:15,name:'Matera Criolla Completa',category:'combos',label:'Matera',price:60000,stock:1,status:'low',visible:true,featured:false,image:'assets/matera-combo.png',description:'Matera de cuero con pelo, mate imperial y bombilla. Un conjunto de gran presencia.'}
-];
-
 const config=window.TP_SUPABASE_CONFIG||{};
 const cloudReady=Boolean(window.supabase&&/^https:\/\/.+\.supabase\.co$/i.test(config.url||'')&&config.anonKey&&!/PEGAR_/i.test(config.anonKey));
 const cloud=cloudReady?window.supabase.createClient(config.url,config.anonKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
-const DB_NAME='tiendamatetp-demo',STORE='products';
-let db,products=[],activeFilter='all',selection={},currentUser=null,isAdmin=false,busy=false,cloudOnline=false,searchTerm='',sortMode='featured',activeProduct=null,modalQty=1,activeMediaIndex=0;
+let products=[],activeFilter='all',selection={},currentUser=null,isAdmin=false,busy=false,cloudOnline=false,searchTerm='',sortMode='featured',activeProduct=null,modalQty=1,activeMediaIndex=0;
 
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const money=v=>new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(Number(v)||0);
@@ -31,46 +12,33 @@ const wa=msg=>`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
 const whatsappUrl=product=>wa(`Hola, quiero consultar por ${product?'el artículo "'+product+'"':'un artículo'} que vi en la página web de tiendamatetp.`);
 const statusLabels={available:'Disponible',low:'Pocas unidades',order:'Por encargo',out:'Sin stock'};
 const categoryStyles={mates:{tag:'Ronda',accent:'mates'},bombillas:{tag:'Acero',accent:'bombillas'},termos:{tag:'Ruta',accent:'termos'},combos:{tag:'Combo listo',accent:'combos'}};
-const FALLBACK_IMAGE='assets/mate-premium-negro.png';
-function safeImage(img){if(!img)return;img.addEventListener('error',()=>{if(!img.dataset.fallback){img.dataset.fallback='1';img.src=FALLBACK_IMAGE}},{once:true})}
+const FALLBACK_IMAGE='';
+function safeImage(img){if(!img)return;img.addEventListener('error',()=>{img.hidden=true;img.closest('.product-image,.spotlight-image,.river-media,.ready-combo-media,.modal-media-stage')?.classList.add('image-missing')},{once:true})}
 function bindImageFallbacks(root=document){root.querySelectorAll('img').forEach(safeImage)}
 const normalise=p=>({...p,id:Number(p.id),price:Number(p.price)||0,compare_at_price:p.compare_at_price==null||p.compare_at_price===''?null:Number(p.compare_at_price)||null,stock:Number(p.stock)||0,visible:p.visible!==false,featured:!!p.featured});
 const hasSale=p=>Number(p?.compare_at_price)>Number(p?.price)&&Number(p?.price)>=0;
 const discountPct=p=>hasSale(p)?Math.max(1,Math.round((1-(Number(p.price)/Number(p.compare_at_price)))*100)):0;
 function priceMarkup(p,{compact=false}={}){if(!hasSale(p))return `<span class="price-current">${money(p.price)}</span>`;return `<span class="price-sale ${compact?'compact':''}"><span class="price-current">${money(p.price)}</span><del>${money(p.compare_at_price)}</del><em>-${discountPct(p)}%</em></span>`}
 
-function openDb(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains(STORE))d.createObjectStore(STORE,{keyPath:'id',autoIncrement:true})};req.onsuccess=()=>{db=req.result;resolve(db)};req.onerror=()=>reject(req.error)})}
-function tx(mode='readonly'){return db.transaction(STORE,mode).objectStore(STORE)}
-function localGetAll(){return new Promise((resolve,reject)=>{const r=tx().getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
-function localPut(p){return new Promise((resolve,reject)=>{const r=tx('readwrite').put(p);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
-function localDelete(id){return new Promise((resolve,reject)=>{const r=tx('readwrite').delete(id);r.onsuccess=()=>resolve();r.onerror=()=>reject(r.error)})}
-function localClear(){return new Promise((resolve,reject)=>{const r=tx('readwrite').clear();r.onsuccess=()=>resolve();r.onerror=()=>reject(r.error)})}
-async function seedLocal(){const all=await localGetAll();if(!all.length)for(const p of DEFAULT_PRODUCTS)await localPut({...p})}
-
 async function fetchProducts(){
- if(!cloudReady){cloudOnline=false;return (await localGetAll()).map(p=>({...normalise(p),media:[]})).sort((a,b)=>a.id-b.id)}
- try{
-  const [{data,error},{data:mediaRows,error:mediaError}]=await Promise.all([cloud.from('products').select('*').order('id',{ascending:true}),cloud.from('product_media').select('*').order('position',{ascending:true}).order('id',{ascending:true})]);
-  if(error)throw error;if(mediaError)throw mediaError;
-  cloudOnline=true;const grouped={};(mediaRows||[]).forEach(m=>(grouped[m.product_id]??=[]).push(m));
-  const list=(data||[]).map(p=>({...normalise(p),media:grouped[p.id]||[]}));
-  try{await localClear();for(const item of list){const {media,...cacheItem}=item;await localPut({...cacheItem})}}catch(cacheErr){console.warn('No se pudo actualizar la copia local',cacheErr)}
-  return list;
- }catch(err){
-  cloudOnline=false;console.error('Supabase no disponible, usando copia local:',err);
-  const cached=(await localGetAll()).map(p=>({...normalise(p),media:[]})).sort((a,b)=>a.id-b.id);
-  if(cached.length)return cached;throw err;
- }
+ if(!cloudReady){cloudOnline=false;throw new Error('Supabase no está configurado.')}
+ const [{data,error},{data:mediaRows,error:mediaError}]=await Promise.all([
+  cloud.from('products').select('*').order('id',{ascending:true}),
+  cloud.from('product_media').select('*').order('position',{ascending:true}).order('id',{ascending:true})
+ ]);
+ if(error)throw error;if(mediaError)throw mediaError;
+ cloudOnline=true;const grouped={};(mediaRows||[]).forEach(m=>(grouped[m.product_id]??=[]).push(m));
+ return (data||[]).map(p=>({...normalise(p),media:grouped[p.id]||[]}));
 }
 async function saveProduct(p){
- if(!cloudReady)return localPut(p);
+ if(!cloudReady)throw new Error('Supabase no está configurado.');
  const payload={name:p.name,category:p.category,label:p.label,price:p.price,compare_at_price:p.compare_at_price||null,stock:p.stock,status:p.status,visible:p.visible,featured:p.featured,image:p.image,description:p.description};
  const query=p.id?cloud.from('products').update(payload).eq('id',p.id):cloud.from('products').insert(payload);
  const {data,error}=await query.select().single();if(error)throw error;return data.id;
 }
-async function removeProduct(id){if(!cloudReady)return localDelete(id);const {error}=await cloud.from('products').delete().eq('id',id);if(error)throw error}
+async function removeProduct(id){if(!cloudReady)throw new Error('Supabase no está configurado.');const {error}=await cloud.from('products').delete().eq('id',id);if(error)throw error}
 async function importProducts(list){
- if(!cloudReady){await localClear();for(const p of list)await localPut(normalise(p));return}
+ if(!cloudReady)throw new Error('Supabase no está configurado.');
  const rows=list.map(({id,...p})=>({name:p.name,category:p.category,label:p.label,price:Number(p.price)||0,compare_at_price:p.compare_at_price==null||p.compare_at_price===''?null:Number(p.compare_at_price)||null,stock:Number(p.stock)||0,status:p.status||'available',visible:p.visible!==false,featured:!!p.featured,image:p.image,description:p.description||''}));
  const {error}=await cloud.from('products').insert(rows);if(error)throw error;
 }
@@ -86,7 +54,7 @@ function sortedVisibleProducts(filter='all'){
 }
 function render(filter='all'){
  activeFilter=filter;grid.innerHTML='';const visible=sortedVisibleProducts(filter);
- if(!visible.length){grid.innerHTML='<p class="empty-catalog">No encontramos productos con esos filtros.</p>';return}
+ if(!visible.length){grid.innerHTML=`<p class="empty-catalog">${cloudOnline?'No hay productos publicados en esta categoría.':'El catálogo no está disponible en este momento.'}</p>`;return}
  visible.forEach((p,index)=>{const card=document.createElement('article');card.className='product-card reveal';card.dataset.out=String(p.status==='out');card.dataset.category=p.category;const exact=p.status==='order'?'Por encargo':p.status==='out'?'Sin stock':`${p.stock} ${p.stock===1?'unidad':'unidades'}`;const disabled=p.status==='out';card.innerHTML=`<div class="product-image" data-id="${p.id}"><img src="${p.image}" alt="${p.name}" loading="lazy">${stockBadge(p)}</div><div class="product-info"><span>${p.label}</span><h3>${p.name}</h3><div class="product-stockline"><small>${exact}</small>${p.featured?'<b>Destacado</b>':''}</div><div class="product-bottom"><strong class="product-price">${priceMarkup(p)}</strong><div class="product-actions"><button class="product-open" data-open="${p.id}" type="button">Ver</button><button class="product-cart" data-cart-add="${p.id}" type="button" ${disabled?'disabled':''}>${disabled?'Sin stock':'Agregar'}</button></div></div></div>`;grid.appendChild(card);bindImageFallbacks(card);setTimeout(()=>card.classList.add('visible'),index*32)})
 }
 function animateCount(el,to,{duration=900,suffix='',prefix=''}={}){if(!el)return;const safeTo=Number(to)||0;const prefersReduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(prefersReduced){el.textContent=`${prefix}${safeTo}${suffix}`;el.dataset.value=safeTo;return}const start=Number(el.dataset.value||0),diff=safeTo-start,startTime=performance.now();function frame(now){const progress=Math.min(1,(now-startTime)/duration),eased=1-Math.pow(1-progress,3),value=Math.round(start+diff*eased);el.textContent=`${prefix}${value}${suffix}`;if(progress<1)requestAnimationFrame(frame);else el.dataset.value=safeTo}requestAnimationFrame(frame)}
@@ -101,7 +69,7 @@ function renderFeatured(){
  if(!featured){section.hidden=true;return}
  section.hidden=false;
  const image=section.querySelector('.spotlight-image img'),title=section.querySelector('.spotlight-copy h2'),description=section.querySelector('.spotlight-copy p'),price=section.querySelector('.spotlight-price strong'),priceNote=section.querySelector('.spotlight-price small'),link=section.querySelector('.spotlight-copy .button');
- if(image){image.src=featured.image||FALLBACK_IMAGE;image.alt=`${featured.name} destacado`;safeImage(image)}
+ if(image){image.hidden=false;image.src=featured.image||'';image.alt=`${featured.name} destacado`;safeImage(image)}
  if(title)title.textContent=featured.name;
  if(description)description.textContent=featured.description||'Consultá disponibilidad y opciones de este producto destacado.';
  if(price)price.innerHTML=priceMarkup(featured);
@@ -111,7 +79,7 @@ function renderFeatured(){
 
 async function keepOnlyFeatured(productId){
  if(!productId)return;
- if(!cloudReady){for(const other of products){if(other.id!==productId&&other.featured)await localPut({...other,featured:false})}return}
+ if(!cloudReady)throw new Error('Supabase no está configurado.');
  const {error}=await cloud.from('products').update({featured:false}).eq('featured',true).neq('id',productId);if(error)throw error;
 }
 function updateProductModal(){if(!activeProduct)return;const p=activeProduct,max=p.status==='order'?99:Math.max(1,p.stock);modalQty=Math.max(1,Math.min(modalQty,max));$('#modalQty').value=modalQty;$('#modalSubtotal').textContent=money(p.price*modalQty);$('#qtyMinus').disabled=modalQty<=1;$('#qtyPlus').disabled=p.status!=='order'&&modalQty>=p.stock;const link=$('#modalWhatsapp'),unavailable=p.status==='out';link.href=unavailable?'#':wa(`Hola Tiago, quiero pedir ${modalQty} ${modalQty===1?'unidad':'unidades'} de "${p.name}" que vi en la web de tiendamatetp. El subtotal publicado es ${money(p.price*modalQty)}. ¿Coordinamos la compra?`);link.textContent=unavailable?'Sin stock por el momento':`Pedir ${modalQty} por WhatsApp`;link.classList.toggle('disabled',unavailable)}
@@ -142,7 +110,7 @@ function setAdminView(){
 }
 async function verifyAdmin(user){if(!cloudReady||!user)return false;const {data,error}=await cloud.from('admin_users').select('user_id').eq('user_id',user.id).maybeSingle();if(error)throw error;return Boolean(data)}
 async function refreshSession(){
- if(!cloudReady){setConnectionStatus('demo','Modo de prueba local: conectá Supabase para activar el inicio de sesión real.');$('#adminEnter').disabled=true;$('#loginHelp').textContent='Abrí INSTRUCCIONES-SUPABASE.md para conectar el proyecto. El catálogo sigue funcionando como demo local.';return}
+ if(!cloudReady){setConnectionStatus('error','Supabase no está configurado.');$('#adminEnter').disabled=true;$('#loginHelp').textContent='La tienda usa únicamente Supabase. Revisá supabase-config.js.';return}
  try{const {data:{session}}=await cloud.auth.getSession();currentUser=session?.user||null;isAdmin=await verifyAdmin(currentUser);setConnectionStatus('online','Supabase conectado · acceso protegido por usuario y políticas RLS.');setAdminView()}catch(err){console.error(err);setConnectionStatus('error','No se pudo verificar la conexión con Supabase. Revisá la configuración.');}
 }
 $('#openAdmin').addEventListener('click',()=>{adminModal.showModal();refreshSession()});
@@ -174,7 +142,7 @@ async function uploadProductMedia(file,productId,position){const isImage=file.ty
 async function deleteProductMedia(mediaId){const media=products.flatMap(p=>p.media||[]).find(m=>Number(m.id)===Number(mediaId));if(!media)return;const {error}=await cloud.from('product_media').delete().eq('id',media.id);if(error)throw error;if(media.storage_path){const {error:storageError}=await cloud.storage.from(config.storageBucket||'product-images').remove([media.storage_path]);if(storageError)console.warn('No se pudo borrar el archivo físico',storageError)}}
 $('#editorMediaManager').addEventListener('click',async e=>{const btn=e.target.closest('[data-remove-media]');if(!btn||!requireAdmin())return;if(!confirm('¿Eliminar este archivo de la galería?'))return;try{await deleteProductMedia(Number(btn.dataset.removeMedia));await reloadProducts();const id=Number($('#editId').value);const p=products.find(x=>x.id===id);renderEditorMedia(p)}catch(err){alert(`No se pudo eliminar: ${err.message}`)}});
 $('#productForm').addEventListener('submit',async e=>{e.preventDefault();if(!requireAdmin()||busy)return;busy=true;const submit=e.submitter;submit.disabled=true;submit.textContent='Guardando…';try{const oldId=Number($('#editId').value)||undefined;let image=$('#editImage').value.trim();const upload=$('#editUpload').files[0];if(upload)image=await uploadImage(upload);if(!image)throw new Error('Elegí una foto principal antes de guardar.');const p={...(oldId?products.find(x=>x.id===oldId):{}),name:$('#editName').value.trim(),category:$('#editCategory').value,label:$('#editLabel').value.trim(),price:Number($('#editPrice').value),compare_at_price:($('#editComparePrice').value.trim()?Number($('#editComparePrice').value):null),stock:Number($('#editStock').value),status:$('#editStatus').value,description:$('#editDescription').value.trim(),image,visible:$('#editVisible').checked,featured:$('#editFeatured').checked};if(oldId)p.id=oldId;const savedId=Number(await saveProduct(p)||oldId);if(p.featured)await keepOnlyFeatured(savedId);const extraFiles=[...$('#editMediaUpload').files];if(extraFiles.length){const existing=oldId?(products.find(x=>x.id===oldId)?.media||[]):[];let position=existing.length;for(const file of extraFiles){submit.textContent=`Subiendo ${position-existing.length+1}/${extraFiles.length}…`;await uploadProductMedia(file,savedId,position++)}}editorModal.close();await reloadProducts()}catch(err){console.error(err);alert(`No se pudo guardar el producto: ${err.message}`)}finally{busy=false;submit.disabled=false;submit.textContent='Guardar cambios'}});
-$('#exportDb').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({version:2,source:cloudReady?'supabase':'local',exportedAt:new Date().toISOString(),products},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='tiendamatetp-copia-productos.json';a.click();URL.revokeObjectURL(a.href)});
+$('#exportDb').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({version:2,source:'supabase',exportedAt:new Date().toISOString(),products},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='tiendamatetp-copia-productos.json';a.click();URL.revokeObjectURL(a.href)});
 $('#importDb').addEventListener('change',async e=>{const file=e.target.files[0];if(!file||!requireAdmin())return;try{const data=JSON.parse(await file.text()),list=Array.isArray(data)?data:data.products;if(!Array.isArray(list))throw new Error('Formato inválido');if(!confirm(`¿Importar ${list.length} productos? Se agregarán a los existentes.`))return;await importProducts(list);await reloadProducts();alert('Productos importados correctamente.')}catch(err){alert(`No se pudo importar: ${err.message}`)}finally{e.target.value=''}});
 
 const menuBtn=$('.menu-toggle'),nav=$('.nav');menuBtn.addEventListener('click',()=>{nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',nav.classList.contains('open'))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
@@ -186,7 +154,14 @@ window.addEventListener('load',()=>setTimeout(()=>$('#intro').classList.add('hid
 const craftDetail=$('#craftDetail');$$('.hotspot').forEach(btn=>btn.addEventListener('click',()=>{$$('.hotspot').forEach(x=>x.classList.remove('active'));btn.classList.add('active');craftDetail.innerHTML=`<strong>${btn.dataset.title}</strong><span>${btn.dataset.copy}</span>`}));
 $$('.gift-card').forEach(card=>card.addEventListener('click',e=>{e.preventDefault();window.open(wa(`Hola Tiago, estoy buscando un regalo para ${card.dataset.occasion}. Vi la sección "Regalá un mate" en la página de tiendamatetp y quiero conocer las opciones disponibles.`),'_blank','noopener')}));$('#businessWhatsapp').href=wa('Hola Tiago, quiero consultar por un pedido personalizado para una empresa, club o evento que vi en la página de tiendamatetp. Quisiera conocer opciones, cantidades y tiempos de entrega.');
 
-(async()=>{try{await openDb();await seedLocal();await reloadProducts();await refreshSession()}catch(err){console.error(err);if(cloudReady){setConnectionStatus('error','Supabase no está respondiendo. La tienda quedó en modo respaldo.');products=(await localGetAll()).map(normalise);render();renderFeatured();buildCombo();updateStoreStatus()}else alert('No se pudo iniciar la base local. Probá abrir la página en Chrome o Edge.')}})();
+(async()=>{
+ try{await reloadProducts();await refreshSession()}
+ catch(err){
+  console.error(err);cloudOnline=false;products=[];
+  render();renderFeatured();buildCombo();renderAdmin();updateStoreStatus();renderProductRiver();renderReadyCombos();
+  setConnectionStatus('error','No pudimos cargar el catálogo en este momento.');
+ }
+})();
 
 
 function initScrollFx(){const progress=$('#scrollProgress'),backTop=$('#backTop'),sectionLinks=[...document.querySelectorAll('.nav a[href^="#"]')],sections=[...document.querySelectorAll('main section[id]')];const update=()=>{const max=document.documentElement.scrollHeight-window.innerHeight,percent=max>0?window.scrollY/max*100:0;if(progress)progress.style.width=`${percent}%`;backTop?.classList.toggle('visible',window.scrollY>560);let current='';const marker=window.scrollY+window.innerHeight*.32;sections.forEach(sec=>{if(sec.offsetTop<=marker)current=sec.id});sectionLinks.forEach(link=>link.classList.toggle('active',link.getAttribute('href')===`#${current}`));};window.addEventListener('scroll',update,{passive:true});backTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));update()}

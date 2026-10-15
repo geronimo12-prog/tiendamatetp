@@ -1,0 +1,9 @@
+TIENDAMATETP V23 — SOLO SUPABASE
+
+- Se eliminaron los productos hardcodeados de prueba.
+- Se eliminó el fallback de IndexedDB/caché local.
+- La web muestra exclusivamente los productos existentes en public.products de Supabase.
+- Si Tiago agrega, edita, oculta o elimina un producto en Supabase/panel, el cambio se refleja en catálogo, carrusel, destacados y combos al recargar.
+- Si Supabase no responde, no aparecen productos inventados ni antiguos.
+
+No hace falta ejecutar una migración nueva para V23.

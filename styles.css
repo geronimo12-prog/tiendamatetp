@@ -537,3 +537,7 @@ body:before{opacity:.08!important;background-image:none!important}.grain{opacity
 #modalPrice .price-sale{font-size:1em}.spotlight-price .price-sale{font-size:.95em}
 @media(max-width:980px){.ready-combos-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ready-combos-heading{align-items:flex-start;flex-direction:column}}
 @media(max-width:620px){.ready-combos-grid{grid-template-columns:1fr;gap:16px}.ready-combo-card{border-radius:22px}.ready-combo-copy{padding:17px}.ready-combo-bottom{align-items:flex-start;flex-direction:column}.ready-combo-bottom>div{width:100%}.ready-combo-bottom button{flex:1}.price-sale{gap:6px}.price-sale em{font-size:9px}}
+
+
+/* V23: catálogo exclusivamente desde Supabase */
+.image-missing{position:relative;background:linear-gradient(135deg,rgba(0,0,0,.04),rgba(0,0,0,.015))!important}.image-missing:after{content:"Imagen no disponible";position:absolute;inset:0;display:grid;place-items:center;padding:20px;text-align:center;font:700 12px/1.4 "Inter",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:rgba(30,24,18,.45)}

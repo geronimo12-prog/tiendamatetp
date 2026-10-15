@@ -127,26 +127,8 @@ on storage.objects for delete
 to authenticated
 using (bucket_id = 'product-images' and (select public.is_admin()));
 
--- Productos de demostración. Se insertan solo si la tabla está vacía.
-insert into public.products (name,category,label,price,compare_at_price,stock,status,visible,featured,image,description)
-select * from (values
-('Mate Imperial Premium','mates','Mate',40000,null,3,'low',true,true,'assets/mate-premium-negro.png','Mate de presencia elegante, detalles metálicos y base trabajada. Ideal para quien busca un modelo protagonista.'),
-('Mate Camionero','mates','Mate',35000,null,7,'available',true,false,'assets/mate-camionero.png','Formato camionero de madera con virola labrada. Cómodo, firme y con estilo bien argentino.'),
-('Mate Calabaza con Cuero','mates','Mate',30000,null,4,'available',true,false,'assets/mate-calabaza.png','Calabaza natural con protector de cuero y bombilla decorada. Cada pieza presenta variaciones propias.'),
-('Mate Negro Clásico','mates','Mate',25000,null,2,'low',true,false,'assets/mate-negro.png','Diseño sobrio en cuero negro con virola metálica y base estable.'),
-('Mate Sombrero','mates','Mate',20000,null,0,'order',true,false,'assets/mate-sombrero.png','Mate de madera con una silueta original que recuerda al clásico sombrero criollo.'),
-('Mate Coronados de Gloria','mates','Mate',30000,null,5,'available',true,false,'assets/mates-gloria.png','Mate de madera grabado con el Sol de Mayo. Una opción con fuerte identidad nacional.'),
-('Mate de Madera','mates','Mate',22000,null,9,'available',true,false,'assets/mates-madera.png','Modelo de madera torneada, simple, cálido y durable para el uso de todos los días.'),
-('Mate Imperial Suela','mates','Mate',38000,null,1,'low',true,false,'assets/mates-imperiales.png','Calabaza, virola labrada y base revestida en cuero claro con costura artesanal.'),
-('Bombilla Dorada','bombillas','Bombilla',10000,null,12,'available',true,false,'assets/bombilla-dorada.png','Bombilla de acero con pico dorado, diseño curvo y filtro tipo paleta.'),
-('Bombilla Clásica','bombillas','Bombilla',10000,null,18,'available',true,false,'assets/bombillas-clasicas.png','Bombilla versátil para uso diario, con filtro plano y terminación combinada.'),
-('Bombilla Premium','bombillas','Bombilla',15000,null,6,'available',true,false,'assets/bombillas-premium.png','Modelo decorado con detalles dorados y cuerpo labrado. Terminación de estilo premium.'),
-('Termo Negro Grabado','termos','Termo',45000,null,3,'available',true,false,'assets/termo-negro.png','Termo negro de gran capacidad con manija y grabado criollo personalizado.'),
-('Combo Termo y Mate','combos','Combo',60000,null,2,'low',true,false,'assets/combo-termo-negro.png','Combo listo para acompañarte: termo negro, mate de calabaza, cuero y bombilla.'),
-('Combo Rosa','combos','Combo',60000,null,0,'out',true,false,'assets/combo-rosa.png','Set rosa compuesto por termo y mate, ideal para regalo o para renovar el equipo completo.'),
-('Matera Criolla Completa','combos','Matera',60000,null,1,'low',true,false,'assets/matera-combo.png','Matera de cuero con pelo, mate imperial y bombilla. Un conjunto de gran presencia.')
-) as seed(name,category,label,price,compare_at_price,stock,status,visible,featured,image,description)
-where not exists (select 1 from public.products);
+-- La tienda no inserta productos de demostración.
+-- El catálogo se administra exclusivamente desde Supabase / Panel de Tiago.
 
 
 -- Multimedia adicional por producto (V20)
