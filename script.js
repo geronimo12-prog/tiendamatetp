@@ -42,7 +42,7 @@ async function importProducts(list){
  const rows=list.map(({id,...p})=>({name:p.name,category:p.category,label:p.label,price:Number(p.price)||0,compare_at_price:p.compare_at_price==null||p.compare_at_price===''?null:Number(p.compare_at_price)||null,stock:Number(p.stock)||0,status:p.status||'available',visible:p.visible!==false,featured:!!p.featured,image:p.image,description:p.description||''}));
  const {error}=await cloud.from('products').insert(rows);if(error)throw error;
 }
-async function reloadProducts(){products=(await fetchProducts()).sort((a,b)=>a.id-b.id);render(activeFilter);renderFeatured();buildCombo();renderAdmin();updateStoreStatus()}
+async function reloadProducts(){products=(await fetchProducts()).sort((a,b)=>a.id-b.id);render(activeFilter);renderFeatured();buildCombo();renderAdmin();updateStoreStatus();renderProductRiver();renderReadyCombos()}
 
 const grid=$('#productGrid'),modal=$('#productModal');
 function stockBadge(p){const cls=p.status==='out'?'out':p.status==='low'?'low':p.status==='order'?'order':'available';let label=statusLabels[p.status]||'Disponible';if(p.status!=='order'&&p.status!=='out')label=p.stock===1?'Última unidad':p.stock<=3?`Últimas ${p.stock} unidades`:`${p.stock} unidades`;return `<span class="stock-badge ${cls}">${label}</span>`}
@@ -183,7 +183,7 @@ $('#readyCombosGrid')?.addEventListener('click',e=>{const add=e.target.closest('
 function renderProductRiver(){
  const track=$('#productRiverTrack');if(!track)return;
  const list=products.filter(p=>p.visible!==false);
- if(!list.length){track.innerHTML='';return}
+ if(!list.length){track.innerHTML='<div class="river-empty">Todavía no hay productos publicados.</div>';return}
  const card=p=>{const meta=categoryStyles[p.category]||{tag:'TP'};const stock=p.status==='order'?'Por encargo':p.status==='out'?'Sin stock':`${p.stock} ${p.stock===1?'unidad':'unidades'}`;return `<button class="river-card" type="button" data-category="${p.category}" data-river-id="${p.id}"><span class="river-media"><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="river-hover">Ver producto</span></span><span class="river-card-copy"><small>${meta.tag} · ${p.label}</small><strong>${p.name}</strong><span class="river-meta"><b>${priceMarkup(p,{compact:true})}</b><em>${stock}</em></span></span></button>`};
  const html=list.map(card).join('');
  // Duplicamos el conjunto completo para que el loop sea continuo. Todo producto nuevo cargado desde Supabase entra automáticamente acá.
@@ -208,8 +208,6 @@ function initCardParallax(){
  document.addEventListener('mouseout',e=>{const card=e.target.closest?.('.product-card,.mood-card');if(card)card.style.transform=''});
 }
 
-const originalReloadProducts=reloadProducts;
-reloadProducts=async function(){await originalReloadProducts();renderProductRiver();renderReadyCombos()};
 initMoodShortcuts();initCardParallax();
 if(products.length){renderProductRiver();renderReadyCombos()}
 

@@ -541,3 +541,6 @@ body:before{opacity:.08!important;background-image:none!important}.grain{opacity
 
 /* V23: catálogo exclusivamente desde Supabase */
 .image-missing{position:relative;background:linear-gradient(135deg,rgba(0,0,0,.04),rgba(0,0,0,.015))!important}.image-missing:after{content:"Imagen no disponible";position:absolute;inset:0;display:grid;place-items:center;padding:20px;text-align:center;font:700 12px/1.4 "Inter",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:rgba(30,24,18,.45)}
+
+/* V24: estado vacío del carrusel */
+.river-empty{width:100vw;padding:28px clamp(20px,5vw,72px);font-weight:700;color:color-mix(in srgb,var(--ink) 55%,transparent)}
