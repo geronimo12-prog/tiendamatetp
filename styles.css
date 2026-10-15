@@ -544,3 +544,25 @@ body:before{opacity:.08!important;background-image:none!important}.grain{opacity
 
 /* V24: estado vacío del carrusel */
 .river-empty{width:100vw;padding:28px clamp(20px,5vw,72px);font-weight:700;color:color-mix(in srgb,var(--ink) 55%,transparent)}
+
+/* ===== V24.1 · FIX INTRO EN PC =====
+   La cinemática de entrada debe mostrarse también cuando Windows/Chrome
+   tenga activada la preferencia "reducir movimiento". Solo forzamos la
+   animación de intro; el resto de la tienda sigue respetando esa preferencia. */
+@media (prefers-reduced-motion: reduce){
+  .intro.intro-pour{display:grid!important;animation:none!important}
+  .intro.intro-pour.hidden{opacity:0!important;visibility:hidden!important}
+  .intro-pack{animation:introPackTilt 5.9s cubic-bezier(.4,.05,.25,1) both!important}
+  .yerba-bit{animation:yerbaFall 1.1s ease-in infinite!important}
+  .intro-mate{animation:introMateSet 5.9s cubic-bezier(.2,.8,.2,1) both!important}
+  .mate-yerba{animation:introYerbaFill 5.9s ease both!important}
+  .intro-thermo{animation:introThermoTip 5.9s cubic-bezier(.44,.08,.24,1) both!important}
+  .water-drop{animation:waterDropFall 1s ease-in infinite!important}
+  .mate-water{animation:introWaterFill 5.9s ease both!important}
+  .mate-splash{animation:introSplash 5.9s ease both!important}
+  .mate-splash:before{animation:introSplashDrop 5.9s ease both!important}
+  .mate-splash:after{animation:introSplashDrop 5.9s ease .08s both!important}
+  .intro-steam{animation:introSteamRise 2.7s ease-in-out infinite!important}
+  .intro-ring{animation:introRing 5.9s ease both!important}
+  .intro-brand-reveal{animation:introBrand 5.9s ease both!important}
+}
