@@ -493,7 +493,9 @@
         <label>Estado<select id="editStatus"><option value="available">Disponible</option><option value="low">Pocas unidades</option><option value="order">Por encargo</option><option value="out">Sin stock</option></select></label>
         <label class="wide">Descripción<textarea id="editDescription" rows="4" maxlength="350"></textarea></label>
         <label class="wide">Imagen actual / URL<input id="editImage" required></label>
-        <label class="wide upload-label">O cargar una foto<input id="editUpload" type="file" accept="image/jpeg,image/png,image/webp"><small>En modo nube se sube a Supabase Storage. Máximo 8 MB.</small></label>
+        <label class="wide upload-label">O cargar una foto principal<input id="editUpload" type="file" accept="image/jpeg,image/png,image/webp"><small>Esta es la portada que se usa en catálogo y carrusel. Máximo 8 MB.</small></label>
+        <label class="wide upload-label media-upload-label">Galería adicional · fotos y videos<input id="editMediaUpload" type="file" multiple accept="image/jpeg,image/png,image/webp,video/mp4,video/webm,video/quicktime"><small>Podés elegir varios archivos juntos. Fotos hasta 8 MB; videos hasta 50 MB.</small></label>
+        <div class="wide editor-media-manager" id="editorMediaManager"><span class="editor-media-empty">Guardá el producto y después vas a ver acá su galería.</span></div>
         <label class="check"><input id="editVisible" type="checkbox" checked> Mostrar en la tienda</label>
         <label class="check"><input id="editFeatured" type="checkbox"> Marcar como destacado</label>
       </div>
@@ -501,7 +503,21 @@
     </form>
   </dialog>
 
-  <dialog class="product-modal product-modal-v2" id="productModal"><button class="modal-close" aria-label="Cerrar">×</button><div class="modal-image-wrap"><img id="modalImage" alt="" /><span id="modalStockPill" class="modal-stock-pill"></span></div><div class="modal-copy"><span id="modalCategory"></span><h3 id="modalName"></h3><p id="modalDescription"></p><strong id="modalPrice"></strong><div class="modal-buy-row"><label>Cantidad<div class="qty-control"><button id="qtyMinus" type="button">−</button><input id="modalQty" value="1" inputmode="numeric" readonly><button id="qtyPlus" type="button">+</button></div></label><div class="modal-subtotal"><small>Subtotal</small><b id="modalSubtotal">$0</b></div></div><a id="modalWhatsapp" class="button button-primary" target="_blank" rel="noopener">Pedir por WhatsApp</a><small class="modal-stock-note" id="modalStockNote"></small></div></dialog>
+  <dialog class="product-modal product-modal-v2" id="productModal">
+    <button class="modal-close" aria-label="Cerrar">×</button>
+    <div class="modal-gallery">
+      <div class="modal-media-stage" id="modalMediaStage">
+        <img id="modalImage" alt="" />
+        <video id="modalVideo" controls playsinline preload="metadata" hidden></video>
+        <button class="gallery-nav gallery-prev" id="galleryPrev" type="button" aria-label="Anterior">‹</button>
+        <button class="gallery-nav gallery-next" id="galleryNext" type="button" aria-label="Siguiente">›</button>
+        <span id="modalStockPill" class="modal-stock-pill"></span>
+        <span class="gallery-counter" id="galleryCounter"></span>
+      </div>
+      <div class="modal-thumbs" id="modalThumbs" aria-label="Galería del producto"></div>
+    </div>
+    <div class="modal-copy"><span id="modalCategory"></span><h3 id="modalName"></h3><p id="modalDescription"></p><strong id="modalPrice"></strong><div class="modal-buy-row"><label>Cantidad<div class="qty-control"><button id="qtyMinus" type="button">−</button><input id="modalQty" value="1" inputmode="numeric" readonly><button id="qtyPlus" type="button">+</button></div></label><div class="modal-subtotal"><small>Subtotal</small><b id="modalSubtotal">$0</b></div></div><a id="modalWhatsapp" class="button button-primary" target="_blank" rel="noopener">Pedir por WhatsApp</a><small class="modal-stock-note" id="modalStockNote"></small></div>
+  </dialog>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
