@@ -301,7 +301,7 @@
         <label class="catalog-sort"><span>Ordenar</span><select id="productSort"><option value="featured">Destacados</option><option value="stock">Mayor stock</option><option value="price-asc">Menor precio</option><option value="price-desc">Mayor precio</option><option value="name">Nombre A–Z</option></select></label>
       </div>
       <div class="filters reveal" role="group" aria-label="Filtrar productos">
-        <button class="filter active" data-filter="all">Todos</button><button class="filter" data-filter="mates">Mates</button><button class="filter" data-filter="bombillas">Bombillas</button><button class="filter" data-filter="termos">Termos</button><button class="filter" data-filter="combos">Combos y materas</button>
+        <button class="filter active" data-filter="all">Todos</button><button class="filter" data-filter="mates">Mates</button><button class="filter" data-filter="bombillas">Bombillas</button><button class="filter" data-filter="termos">Termos</button><button class="filter" data-filter="combos">Combos listos</button>
       </div>
       <div class="product-grid" id="productGrid"></div>
     </section>
@@ -328,6 +328,14 @@
           <span>tiendamatetp</span>
         </div>
       </div>
+    </section>
+
+    <section class="ready-combos section" id="combos-listos">
+      <div class="section-heading ready-combos-heading reveal">
+        <div><span class="eyebrow dark">Listos para llevar</span><h2>Combos preparados</h2></div>
+        <p>Equipos completos armados por Tiago. Si entra un combo nuevo al catálogo, aparece acá automáticamente.</p>
+      </div>
+      <div class="ready-combos-grid" id="readyCombosGrid"></div>
     </section>
 
     <section class="combo-builder section" id="combo">
@@ -486,9 +494,10 @@
       <input type="hidden" id="editId">
       <div class="editor-grid">
         <label>Nombre<input id="editName" required maxlength="80"></label>
-        <label>Categoría<select id="editCategory"><option value="mates">Mates</option><option value="bombillas">Bombillas</option><option value="termos">Termos</option><option value="combos">Combos y materas</option></select></label>
+        <label>Categoría<select id="editCategory"><option value="mates">Mates</option><option value="bombillas">Bombillas</option><option value="termos">Termos</option><option value="combos">Combos listos / materas</option></select></label>
         <label>Etiqueta<input id="editLabel" required maxlength="30"></label>
-        <label>Precio<input id="editPrice" type="number" min="0" step="100" required></label>
+        <label>Precio actual<input id="editPrice" type="number" min="0" step="100" required><small>Es el precio que paga el cliente.</small></label>
+        <label>Precio anterior · opcional<input id="editComparePrice" type="number" min="0" step="100" placeholder="Ej. 178000"><small>Si es mayor al precio actual, se mostrará tachado como oferta.</small></label>
         <label>Unidades<input id="editStock" type="number" min="0" step="1" required></label>
         <label>Estado<select id="editStatus"><option value="available">Disponible</option><option value="low">Pocas unidades</option><option value="order">Por encargo</option><option value="out">Sin stock</option></select></label>
         <label class="wide">Descripción<textarea id="editDescription" rows="4" maxlength="350"></textarea></label>
